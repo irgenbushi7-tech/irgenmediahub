@@ -5,218 +5,647 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IrgenMediaHub</title>
   <style>
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:#0f172a;
-      color:white;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .wrap{
-      max-width:1100px;
-      margin:auto;
-      padding:20px;
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #050505 0%, #0a0f2c 45%, #06143f 100%);
+      color: white;
+      line-height: 1.5;
     }
-    .top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      padding:15px 0;
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
-    .logo{
-      font-size:28px;
-      font-weight:bold;
-      color:#f97316;
+
+    img {
+      max-width: 100%;
+      display: block;
     }
-    .btn{
-      background:#f97316;
-      color:white;
-      border:none;
-      padding:10px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:bold;
+
+    .container {
+      width: 92%;
+      max-width: 1280px;
+      margin: auto;
     }
-    .btn2{
-      background:#1e293b;
-      color:white;
-      border:1px solid #334155;
-      padding:10px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:bold;
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 8, 20, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 179, 0, 0.25);
     }
-    .hero{
-      padding:50px 0 20px;
-      text-align:center;
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 0;
+      flex-wrap: wrap;
     }
-    .hero h1{
-      font-size:42px;
-      margin-bottom:10px;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
-    .hero p{
-      color:#cbd5e1;
-      max-width:750px;
-      margin:auto;
-      margin-bottom:20px;
+
+    .brand img {
+      width: 68px;
+      height: 68px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #f2b300;
+      box-shadow: 0 0 25px rgba(242, 179, 0, 0.35);
     }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
+
+    .brand-text h1 {
+      font-size: 30px;
+      color: #ffcc33;
+      line-height: 1;
+      margin-bottom: 5px;
     }
-    .card{
-      background:#111827;
-      border:1px solid #1f2937;
-      border-radius:18px;
-      overflow:hidden;
+
+    .brand-text p {
+      font-size: 13px;
+      color: #ddd;
     }
-    .card img{
-      width:100%;
-      height:200px;
-      object-fit:cover;
-      background:#0b1220;
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .card-body{
-      padding:16px;
+
+    nav a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 179, 0, 0.35);
+      background: rgba(255,255,255,0.04);
+      transition: 0.25s;
+      font-weight: bold;
     }
-    .section-title{
-      font-size:30px;
-      color:#f97316;
-      margin:35px 0 18px;
+
+    nav a:hover {
+      background: linear-gradient(90deg, #f2b300, #ff7a00);
+      color: black;
     }
-    .panel{
-      background:#111827;
-      border:1px solid #1f2937;
-      border-radius:18px;
-      padding:18px;
-      margin-top:20px;
+
+    .hero {
+      padding: 42px 0 30px;
     }
-    input, textarea, select{
-      width:100%;
-      padding:12px;
-      margin-bottom:12px;
-      border-radius:10px;
-      border:1px solid #334155;
-      background:#0f172a;
-      color:white;
-      box-sizing:border-box;
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 25px;
+      align-items: center;
     }
-    textarea{
-      min-height:120px;
-      resize:vertical;
+
+    .hero-card {
+      background: linear-gradient(145deg, rgba(255,165,0,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255, 190, 0, 0.2);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 0 35px rgba(0,0,0,0.35);
     }
-    .row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(255, 179, 0, 0.13);
+      border: 1px solid rgba(255, 179, 0, 0.35);
+      border-radius: 999px;
+      color: #ffcc33;
+      font-size: 13px;
+      margin-bottom: 14px;
+      font-weight: bold;
     }
-    .hidden{
-      display:none;
+
+    .hero h2 {
+      font-size: 54px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      color: white;
     }
-    .status{
-      margin-top:10px;
-      padding:10px;
-      border-radius:10px;
-      font-size:14px;
+
+    .hero h2 span {
+      color: #ffb300;
     }
-    .ok{
-      background:#052e16;
-      color:#86efac;
+
+    .hero p {
+      color: #d8d8d8;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
-    .err{
-      background:#450a0a;
-      color:#fca5a5;
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
     }
-    .small{
-      color:#94a3b8;
-      font-size:13px;
+
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s;
     }
-    .socials{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:15px;
+
+    .btn-primary {
+      background: linear-gradient(90deg, #ff9d00, #ffc400);
+      color: #111;
+      box-shadow: 0 10px 25px rgba(255, 170, 0, 0.25);
     }
-    .socials a{
-      background:#1e293b;
-      border:1px solid #334155;
-      color:white;
-      padding:10px 14px;
-      border-radius:10px;
-      text-decoration:none;
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
     }
-    @media(max-width:800px){
-      .row{
-        grid-template-columns:1fr;
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255, 179, 0, 0.45);
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255, 179, 0, 0.25);
+      font-weight: bold;
+    }
+
+    .socials a:hover {
+      background: rgba(255, 179, 0, 0.12);
+    }
+
+    .hero-image {
+      background: radial-gradient(circle at top, rgba(255, 193, 7, 0.2), rgba(0,0,0,0.15));
+      border: 1px solid rgba(255, 179, 0, 0.2);
+      border-radius: 26px;
+      padding: 18px;
+      box-shadow: 0 0 35px rgba(0,0,0,0.35);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid rgba(255, 179, 0, 0.3);
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section-title {
+      font-size: 34px;
+      color: #ffb300;
+      margin-bottom: 18px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .news-main,
+    .news-side,
+    .course-card,
+    .panel-card,
+    .post-card,
+    .top-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255, 179, 0, 0.18);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.18);
+    }
+
+    .news-main h3,
+    .top-card h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .news-side ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .news-side li {
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .top-news-grid,
+    .courses-grid,
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .top-card img,
+    .post-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 14px;
+    }
+
+    .top-card .cat,
+    .post-card .cat {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #ffcc33;
+      background: rgba(255, 179, 0, 0.12);
+      border: 1px solid rgba(255, 179, 0, 0.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: bold;
+    }
+
+    .course-card h3,
+    .post-card h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .course-card p,
+    .post-card p,
+    .news-main p,
+    .top-card p {
+      color: #d4d4d4;
+    }
+
+    #postsList {
+      margin-top: 10px;
+    }
+
+    .admin-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .panel-card h3 {
+      margin-bottom: 14px;
+      color: #ffcc33;
+      font-size: 28px;
+    }
+
+    .panel-card input,
+    .panel-card textarea,
+    .panel-card select {
+      width: 100%;
+      padding: 14px 14px;
+      margin-bottom: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(5, 10, 25, 0.75);
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .panel-card textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .panel-card input::placeholder,
+    .panel-card textarea::placeholder {
+      color: #bfc4d4;
+    }
+
+    .status {
+      margin-top: 10px;
+      color: #ffcc33;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.25);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 20px;
+      padding: 32px 0;
+    }
+
+    .footer-grid h4 {
+      color: #ffb300;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .footer-grid p,
+    .footer-grid li {
+      color: #d7d7d7;
+      font-size: 15px;
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding: 14px 0 20px;
+      color: #cfcfcf;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .news-grid,
+      .admin-wrap,
+      .footer-grid,
+      .top-news-grid,
+      .courses-grid,
+      .posts-grid {
+        grid-template-columns: 1fr;
       }
-      .hero h1{
-        font-size:32px;
+
+      .hero h2 {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand-text h1 {
+        font-size: 24px;
+      }
+
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .section-title {
+        font-size: 28px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="logo">IrgenMediaHub</div>
+
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <img src="logo.jpg" alt="IrgenMediaHub Logo">
+        <div class="brand-text">
+          <h1>IrgenMediaHub</h1>
+          <p>News • Kurse Gjermanisht • Video Ide • Admin Panel</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#courses">Courses</a>
+        <a href="#admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="tag">Portal modern • Admin vetëm për ty</div>
+          <h2>Mirësevini te <span>IrgenMediaHub</span></h2>
+          <p>
+            Faqe moderne për lajme, kurse gjermanishte A1, video ide fitimi lekësh,
+            rrjete sociale dhe panel administrimi me login + upload postimesh.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#news">Shiko Lajmet</a>
+            <a class="btn btn-outline" href="#admin">Hyr si Admin</a>
+          </div>
+
+          <div class="socials">
+            <a href="https://instagram.com/irgenbushiib" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@irgenbushiig" target="_blank">TikTok</a>
+            <a href="https://youtube.com/@irgenbushiig" target="_blank">YouTube</a>
+            <a href="https://wa.me/" target="_blank">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img src="logo.jpg" alt="IrgenMediaHub">
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section">
+      <div class="container">
+        <h2 class="section-title">Top News</h2>
+
+        <div class="news-grid">
+          <div class="news-main">
+            <div class="cat">Lajmi Kryesor</div>
+            <h3>IrgenMediaHub po rritet si portal modern me përmbajtje reale</h3>
+            <p>
+              Këtu do të shfaqen lajmet e tua, postimet, videot, përditësimet dhe idetë
+              e reja. Ti si admin do hysh me emailin tënd, kurse vizitorët do shohin vetëm
+              faqen publike normale.
+            </p>
+          </div>
+
+          <div class="news-side">
+            <ul>
+              <li>• Lajme të reja nga Shqipëria, Gjermania dhe bota</li>
+              <li>• Kurse gjermanishte nga alfabeti deri te A1</li>
+              <li>• Video ide për fitime online dhe social media</li>
+              <li>• Panel admin për publikim postimesh</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="top-news-grid">
+          <div class="top-card">
+            <img src="logo.jpg" alt="Top news 1">
+            <div class="cat">Trending</div>
+            <h3>Lajme të përditshme me stil modern</h3>
+            <p>Faqja mund të përdoret si portal lajmesh me seksione të ndryshme dhe postime dinamike.</p>
+          </div>
+
+          <div class="top-card">
+            <img src="logo.jpg" alt="Top news 2">
+            <div class="cat">Media</div>
+            <h3>Video, foto dhe postime nga paneli yt</h3>
+            <p>Kur të lidhim mirë Firestore dhe Storage, postimet do dalin automatikisht për publikun.</p>
+          </div>
+
+          <div class="top-card">
+            <img src="logo.jpg" alt="Top news 3">
+            <div class="cat">Admin</div>
+            <h3>Vetëm ti e sheh upload panelin</h3>
+            <p>Vizitorët shohin vetëm faqen publike, ndërsa ti futesh si admin me emailin tënd.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="section">
+      <div class="container">
+        <h2 class="section-title">Kurse Gjermanisht</h2>
+
+        <div class="courses-grid">
+          <div class="course-card">
+            <h3>Numrat</h3>
+            <p>Mëso numrat në gjermanisht nga 1 deri në 100 me shpjegime të thjeshta.</p>
+          </div>
+
+          <div class="course-card">
+            <h3>Alfabeti</h3>
+            <p>Shqiptimi i shkronjave, fjalët bazë dhe ushtrimet e para për fillestarë.</p>
+          </div>
+
+          <div class="course-card">
+            <h3>A1 Fillestar</h3>
+            <p>Mësime bazë: përshëndetje, prezantim, familja, koha, fjalitë e thjeshta dhe praktika.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Postimet e Fundit</h2>
+        <div id="postsList" class="posts-grid">
+          <div class="post-card">
+            <div class="cat">Info</div>
+            <h3>Nuk ka postime ende</h3>
+            <p>Kur të hysh si admin dhe të publikosh postimin e parë, ai do dalë këtu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="admin" class="section" style="display:none;">
+      <div class="container">
+        <h2 class="section-title">Admin Panel</h2>
+
+        <div class="admin-wrap">
+          <div class="panel-card">
+            <h3>Hyr / Regjistrohu</h3>
+
+            <input type="email" id="email" placeholder="Email" />
+            <input type="password" id="password" placeholder="Password" />
+
+            <div class="actions">
+              <button class="btn btn-primary" id="registerBtn">Regjistrohu</button>
+              <button class="btn btn-outline" id="loginBtn">Hyr</button>
+              <button class="btn btn-outline" id="logoutBtn">Dil</button>
+            </div>
+
+            <div class="status" id="authStatus">Nuk je futur ende.</div>
+          </div>
+
+          <div class="panel-card" id="uploadPanel">
+            <h3>Upload Postim i Ri</h3>
+
+            <select id="category">
+              <option value="Lajm">Lajm</option>
+              <option value="Kurs">Kurs</option>
+              <option value="Video Ide">Video Ide</option>
+              <option value="Njoftim">Njoftim</option>
+            </select>
+
+            <input type="text" id="title" placeholder="Titulli" />
+            <input type="text" id="shortDesc" placeholder="Përshkrim i shkurtër" />
+            <textarea id="content" placeholder="Shkruaj postimin..."></textarea>
+            <input type="text" id="imageUrl" placeholder="Link i fotos (opsionale)" />
+
+            <div class="actions">
+              <button class="btn btn-primary" id="publishBtn">Publiko Postimin</button>
+            </div>
+
+            <div class="status" id="publishStatus"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
       <div>
-        <button class="btn" onclick="document.getElementById('admin').scrollIntoView({behavior:'smooth'})">Admin Panel</button>
+        <h4>IrgenMediaHub</h4>
+        <p>
+          Portal modern me lajme, kurse gjermanishte, social media, video ide dhe panel administrimi.
+        </p>
+      </div>
+
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#admin">Admin</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Social</h4>
+        <ul>
+          <li><a href="https://instagram.com/irgenbushiib" target="_blank">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@irgenbushiig" target="_blank">TikTok</a></li>
+          <li><a href="https://youtube.com/@irgenbushiig" target="_blank">YouTube</a></li>
+          <li><a href="https://wa.me/" target="_blank">WhatsApp</a></li>
+        </ul>
       </div>
     </div>
 
-    <div class="hero">
-      <h1>IrgenMediaHub</h1>
-      <p>Lajme, kurse gjermanisht A1, video ide fitimi lekesh dhe panel admin me login + upload postimesh.</p>
-
-      <div class="socials">
-        <a href="https://instagram.com/irgenbushiib" target="_blank">Instagram</a>
-        <a href="https://tiktok.com/@irgenbushiig" target="_blank">TikTok</a>
-        <a href="https://youtube.com/@irgenbushiig" target="_blank">YouTube</a>
-        <a href="https://wa.me/" target="_blank">WhatsApp</a>
-      </div>
+    <div class="copyright">
+      © 2026 IrgenMediaHub. Të gjitha të drejtat e rezervuara.
     </div>
-
-    <h2 class="section-title">Postimet</h2>
-    <div id="postsGrid" class="grid"></div>
-
-    <div id="admin" class="row">
-      <div class="panel">
-        <h3 style="margin-bottom:14px;">Hyr / Regjistrohu</h3>
-
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-
-        <button class="btn" onclick="registerUser()">Regjistrohu</button>
-        <button class="btn2" onclick="loginUser()" style="margin-top:10px;">Hyr</button>
-        <button class="btn2 hidden" id="logoutBtn" onclick="logoutUser()" style="margin-top:10px;">Dil</button>
-
-        <div id="authStatus" class="hidden status"></div>
-        <p class="small" style="margin-top:14px;">Përdor Email/Password nga Firebase Authentication.</p>
-      </div>
-
-      <div class="panel hidden" id="uploadPanel">
-        <h3 style="margin-bottom:14px;">Upload Postim i Ri</h3>
-
-        <select id="postCategory">
-          <option value="news">Lajm</option>
-          <option value="course">Kurs Gjermanisht</option>
-          <option value="idea">Ide Fitimi</option>
-        </select>
-
-        <input type="text" id="postTitle" placeholder="Titulli">
-        <input type="text" id="postExcerpt" placeholder="Përshkrim i shkurtër">
-        <textarea id="postContent" placeholder="Shkruaj postimin..."></textarea>
-        <input type="file" id="postImageFile" accept="image/*">
-        <input type="text" id="postImageUrl" placeholder="ose link i fotos (opsionale)">
-
-        <button class="btn" onclick="createPost()">Publiko</button>
-        <div id="uploadStatus" class="hidden status"></div>
-      </div>
-    </div>
-  </div>
+  </footer>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
@@ -236,12 +665,6 @@
       orderBy,
       serverTimestamp
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-    import {
-      getStorage,
-      ref,
-      uploadBytes,
-      getDownloadURL
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBNd1xn_-w9EQV-7q4YE_xQgdlVoczzrt0",
@@ -255,173 +678,163 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-    const storage = getStorage(app);
 
-    let allPosts = [];
+    const allowedAdminEmail = "irgenbushi7@gmail.com";
 
-    function showStatus(id, text, ok = true) {
-      const box = document.getElementById(id);
-      box.classList.remove("hidden", "ok", "err");
-      box.classList.add(ok ? "ok" : "err");
-      box.textContent = text;
-    }
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const registerBtn = document.getElementById("registerBtn");
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const authStatus = document.getElementById("authStatus");
 
-    function categoryLabel(cat) {
-      if (cat === "news") return "Lajm";
-      if (cat === "course") return "Kurs";
-      if (cat === "idea") return "Ide";
-      return "Postim";
-    }
+    const adminSection = document.getElementById("admin");
+    const uploadPanel = document.getElementById("uploadPanel");
 
-    function renderPosts() {
-      const grid = document.getElementById("postsGrid");
-      grid.innerHTML = "";
-
-      if (!allPosts.length) {
-        grid.innerHTML = `
-          <div class="panel">
-            <p class="small">Nuk ka postime akoma.</p>
-          </div>
-        `;
-        return;
-      }
-
-      allPosts.forEach(post => {
-        const image = post.imageUrl || "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200&auto=format&fit=crop";
-        grid.innerHTML += `
-          <div class="card">
-            <img src="${image}" alt="${post.title}">
-            <div class="card-body">
-              <div style="margin-bottom:10px;color:#fb923c;font-weight:bold;">${categoryLabel(post.category)}</div>
-              <h3 style="margin-bottom:10px;">${post.title || ""}</h3>
-              <p style="color:#cbd5e1;margin-bottom:10px;">${post.excerpt || ""}</p>
-              <p style="color:#e5e7eb;">${post.content || ""}</p>
-            </div>
-          </div>
-        `;
-      });
-    }
+    const category = document.getElementById("category");
+    const title = document.getElementById("title");
+    const shortDesc = document.getElementById("shortDesc");
+    const content = document.getElementById("content");
+    const imageUrl = document.getElementById("imageUrl");
+    const publishBtn = document.getElementById("publishBtn");
+    const publishStatus = document.getElementById("publishStatus");
+    const postsList = document.getElementById("postsList");
 
     async function loadPosts() {
+      postsList.innerHTML = "<div class='post-card'><h3>Duke ngarkuar postimet...</h3></div>";
+
       try {
-        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-        const snap = await getDocs(q);
-        allPosts = [];
-        snap.forEach(doc => {
-          allPosts.push({ id: doc.id, ...doc.data() });
+        const postsRef = collection(db, "posts");
+        const q = query(postsRef, orderBy("createdAt", "desc"));
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+          postsList.innerHTML = `
+            <div class="post-card">
+              <div class="cat">Info</div>
+              <h3>Nuk ka postime ende</h3>
+              <p>Kur të hysh si admin dhe të publikosh postimin e parë, ai do dalë këtu.</p>
+            </div>
+          `;
+          return;
+        }
+
+        postsList.innerHTML = "";
+
+        snapshot.forEach((doc) => {
+          const post = doc.data();
+          const card = document.createElement("div");
+          card.className = "post-card";
+
+          card.innerHTML = `
+            ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}">` : `<img src="logo.jpg" alt="${post.title}">`}
+            <div class="cat">${post.category || "Postim"}</div>
+            <h3>${post.title || ""}</h3>
+            <p><strong>${post.shortDesc || ""}</strong></p>
+            <p style="margin-top:10px;">${post.content || ""}</p>
+          `;
+
+          postsList.appendChild(card);
         });
-        renderPosts();
-      } catch (e) {
-        console.error(e);
-        renderPosts();
+      } catch (error) {
+        postsList.innerHTML = `
+          <div class="post-card">
+            <div class="cat">Gabim</div>
+            <h3>Postimet nuk u ngarkuan</h3>
+            <p>Kontrollo në Firebase nëse është krijuar Firestore Database.</p>
+          </div>
+        `;
       }
     }
 
-    async function uploadImageIfNeeded() {
-      const fileInput = document.getElementById("postImageFile");
-      const manualUrl = document.getElementById("postImageUrl").value.trim();
-
-      if (fileInput.files && fileInput.files[0]) {
-        const file = fileInput.files[0];
-        const fileRef = ref(storage, "posts/" + Date.now() + "_" + file.name);
-        await uploadBytes(fileRef, file);
-        return await getDownloadURL(fileRef);
-      }
-
-      if (manualUrl) return manualUrl;
-      return "";
-    }
-
-    window.registerUser = async function () {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      if (!email || !password) {
-        showStatus("authStatus", "Vendos email dhe password.", false);
+    registerBtn.addEventListener("click", async () => {
+      if (!email.value || !password.value) {
+        authStatus.textContent = "Vendos email dhe password.";
         return;
       }
 
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        showStatus("authStatus", "U regjistrua me sukses.", true);
-      } catch (e) {
-        showStatus("authStatus", e.message, false);
+        await createUserWithEmailAndPassword(auth, email.value, password.value);
+        authStatus.textContent = "Llogaria u krijua me sukses.";
+      } catch (error) {
+        authStatus.textContent = "Gabim: " + error.message;
       }
-    };
+    });
 
-    window.loginUser = async function () {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      if (!email || !password) {
-        showStatus("authStatus", "Vendos email dhe password.", false);
+    loginBtn.addEventListener("click", async () => {
+      if (!email.value || !password.value) {
+        authStatus.textContent = "Vendos email dhe password.";
         return;
       }
 
       try {
-        await signInWithEmailAndPassword(auth, email, password);
-        showStatus("authStatus", "Hyrja u bë me sukses.", true);
-      } catch (e) {
-        showStatus("authStatus", e.message, false);
+        await signInWithEmailAndPassword(auth, email.value, password.value);
+        authStatus.textContent = "Hyrja u bë me sukses.";
+      } catch (error) {
+        authStatus.textContent = "Gabim: " + error.message;
       }
-    };
+    });
 
-    window.logoutUser = async function () {
+    logoutBtn.addEventListener("click", async () => {
       try {
         await signOut(auth);
-        showStatus("authStatus", "Dole nga llogaria.", true);
-      } catch (e) {
-        showStatus("authStatus", e.message, false);
+        authStatus.textContent = "Dole nga llogaria.";
+      } catch (error) {
+        authStatus.textContent = "Gabim: " + error.message;
       }
-    };
+    });
 
-    window.createPost = async function () {
-      const title = document.getElementById("postTitle").value.trim();
-      const excerpt = document.getElementById("postExcerpt").value.trim();
-      const content = document.getElementById("postContent").value.trim();
-      const category = document.getElementById("postCategory").value;
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        if (user.email === allowedAdminEmail) {
+          adminSection.style.display = "block";
+          uploadPanel.style.display = "block";
+          authStatus.textContent = "Je futur si admin: " + user.email;
+        } else {
+          adminSection.style.display = "none";
+          uploadPanel.style.display = "none";
+          authStatus.textContent = "Je futur, por nuk je admin.";
+        }
+      } else {
+        adminSection.style.display = "none";
+        uploadPanel.style.display = "none";
+        authStatus.textContent = "Nuk je futur ende.";
+      }
+    });
 
-      if (!title || !excerpt || !content) {
-        showStatus("uploadStatus", "Plotëso titullin, përshkrimin dhe tekstin.", false);
+    publishBtn.addEventListener("click", async () => {
+      const user = auth.currentUser;
+
+      if (!user || user.email !== allowedAdminEmail) {
+        publishStatus.textContent = "Vetëm admini mund të publikojë.";
+        return;
+      }
+
+      if (!title.value || !shortDesc.value || !content.value) {
+        publishStatus.textContent = "Plotëso titullin, përshkrimin dhe postimin.";
         return;
       }
 
       try {
-        showStatus("uploadStatus", "Duke ngarkuar postimin...", true);
-        const imageUrl = await uploadImageIfNeeded();
-
         await addDoc(collection(db, "posts"), {
-          title,
-          excerpt,
-          content,
-          category,
-          imageUrl,
+          category: category.value,
+          title: title.value,
+          shortDesc: shortDesc.value,
+          content: content.value,
+          imageUrl: imageUrl.value.trim(),
           createdAt: serverTimestamp()
         });
 
-        document.getElementById("postTitle").value = "";
-        document.getElementById("postExcerpt").value = "";
-        document.getElementById("postContent").value = "";
-        document.getElementById("postImageUrl").value = "";
-        document.getElementById("postImageFile").value = "";
+        publishStatus.textContent = "Postimi u publikua me sukses.";
 
-        showStatus("uploadStatus", "Postimi u publikua me sukses.", true);
-        await loadPosts();
-      } catch (e) {
-        showStatus("uploadStatus", e.message, false);
-      }
-    };
+        title.value = "";
+        shortDesc.value = "";
+        content.value = "";
+        imageUrl.value = "";
 
-    onAuthStateChanged(auth, (user) => {
-      const uploadPanel = document.getElementById("uploadPanel");
-      const logoutBtn = document.getElementById("logoutBtn");
-
-      if (user) {
-        uploadPanel.classList.remove("hidden");
-        logoutBtn.classList.remove("hidden");
-      } else {
-        uploadPanel.classList.add("hidden");
-        logoutBtn.classList.add("hidden");
+        loadPosts();
+      } catch (error) {
+        publishStatus.textContent = "Gabim gjatë publikimit: " + error.message;
       }
     });
 
