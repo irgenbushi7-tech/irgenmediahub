@@ -1,19 +1,90 @@
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IrgenMediaHub</title>
 
-  // Your web app's Firebase configuration
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      background: #020617;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: block;
+      margin: 10px auto;
+      padding: 15px;
+      width: 220px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .instagram { background: #e1306c; }
+    .tiktok { background: black; }
+    .youtube { background: red; }
+    .facebook { background: #1877f2; }
+    .whatsapp { background: #25d366; }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  IrgenMediaHub 🚀
+</header>
+
+<h2>Follow me</h2>
+
+<div class="buttons">
+  <a class="btn instagram" href="https://instagram.com/irgenbushiib" target="_blank">Instagram</a>
+  <a class="btn tiktok" href="https://tiktok.com/@irgenbushiig" target="_blank">TikTok</a>
+  <a class="btn youtube" href="https://youtube.com/@irgenbushiig" target="_blank">YouTube</a>
+  <a class="btn facebook" href="#">Facebook</a>
+  <a class="btn whatsapp" href="https://wa.me/355XXXXXXXXX">WhatsApp</a>
+</div>
+
+<footer>
+  © 2026 IrgenMediaHub
+</footer>
+
+<!-- FIREBASE -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+
   const firebaseConfig = {
-    apiKey: "AIzaSyBNd1xn_-w9EQV-7q4YE_xQgdlVoczzrt0",
+    apiKey: "AIzaSyBNd1xn-_w9EQV-7q4YE_xQgdIVoczzrt0",
     authDomain: "irgenmediahub-web.firebaseapp.com",
     projectId: "irgenmediahub-web",
     storageBucket: "irgenmediahub-web.firebasestorage.app",
     messagingSenderId: "580157887229",
-    appId: "1:580157887229:web:1dadd027181beca506a494"
+    appId: "1:580157887229:web:1dadde27181beca506a494"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 </script>
+
+</body>
+</html>
