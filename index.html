@@ -4,713 +4,789 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IrgenMediaHub</title>
-  <meta name="description" content="IrgenMediaHub - portal lajmesh, kurse gjermanishte A1, video dhe ide fitimi online." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <meta name="description" content="IrgenMediaHub - portal modern lajmesh, gjermanisht A1, ide fitimi dhe video." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
     :root{
-      --bg:#05070b;
-      --bg2:#09101a;
-      --card:#0b1320;
-      --card2:#0d1726;
-      --text:#f3f6fb;
-      --muted:#b6c0cf;
-      --line:rgba(255,255,255,.09);
+      --bg:#04070c;
+      --bg2:#07111c;
+      --panel:#08111d;
+      --panel2:#0b1524;
+      --line:rgba(255,196,77,.18);
+      --text:#f8fbff;
+      --muted:#b8c2d1;
       --orange:#ff8a00;
-      --gold:#f2c14e;
-      --gold2:#ffcf5a;
-      --navy:#08111f;
-      --shadow:0 10px 35px rgba(0,0,0,.35);
-      --radius:22px;
-      --radius-sm:16px;
+      --orange2:#ff9d1f;
+      --gold:#ffc44d;
+      --gold2:#ffd978;
+      --danger:#ff5f57;
+      --success:#29c36a;
+      --shadow:0 18px 45px rgba(0,0,0,.42);
+      --radius:24px;
+      --header-h:84px;
       --max:1280px;
-      --header-h:88px;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:'Inter',sans-serif;
+      font-family:'Inter',system-ui,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 15% 10%, rgba(255,138,0,.18), transparent 25%),
-        radial-gradient(circle at 80% 0%, rgba(242,193,78,.12), transparent 22%),
-        linear-gradient(180deg,#030508 0%, #07101b 28%, #05080d 100%);
+        radial-gradient(circle at 12% 12%, rgba(255,138,0,.12), transparent 22%),
+        radial-gradient(circle at 88% 8%, rgba(255,196,77,.08), transparent 18%),
+        linear-gradient(180deg,#03060a 0%, #06101a 45%, #03060a 100%);
       overflow-x:hidden;
     }
 
-    a,button,input,textarea,select,label{
-      position:relative;
-      z-index:5;
-    }
-
     img{max-width:100%;display:block}
-    .container{width:min(var(--max), calc(100% - 32px));margin:auto}
-    .section{padding:86px 0}
-    .section-title{
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    button,a,input,select,textarea,label,.clickable{position:relative;z-index:5}
+
+    .container{width:min(var(--max), calc(100% - 30px));margin:auto}
+    .section{padding:30px 0}
+    .section-head{
       display:flex;align-items:center;justify-content:space-between;gap:16px;
-      margin:0 0 28px;
+      margin-bottom:18px;
     }
-    .section-title h2{
+    .section-head h2{
       margin:0;
-      font-size:clamp(28px,4vw,44px);
-      line-height:1.05;
+      font-size:clamp(30px,4vw,42px);
       font-weight:900;
       letter-spacing:-.03em;
     }
-    .accent{background:linear-gradient(90deg,var(--orange),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .accent{color:var(--orange)}
     .muted{color:var(--muted)}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
-      border:1px solid rgba(255,183,77,.28);
-      color:#ffd089;
       padding:8px 14px;border-radius:999px;
-      font-size:.85rem;background:rgba(255,153,0,.08)
+      border:1px solid rgba(255,196,77,.2);
+      background:rgba(255,138,0,.08);
+      color:#ffcf78;font-size:.86rem;font-weight:700;
     }
 
-    /* DECOR */
-    .page-glow,.lines{
-      position:fixed;inset:0;pointer-events:none;z-index:0
+    .bg-orbs,.hero-bg,.hero-grid,.hero-lines,.ring-decor{pointer-events:none!important}
+    .bg-orbs{
+      position:fixed;inset:0;z-index:0;
     }
-    .page-glow:before,.page-glow:after{
-      content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.22
+    .bg-orbs::before,
+    .bg-orbs::after{
+      content:"";position:absolute;border-radius:50%;filter:blur(80px);opacity:.18;
     }
-    .page-glow:before{width:320px;height:320px;background:#ff8a00;top:-80px;left:-60px}
-    .page-glow:after{width:280px;height:280px;background:#f2c14e;top:120px;right:-60px}
-    .lines:before{
-      content:"";position:absolute;inset:auto -10% 30% -10%;height:2px;
-      background:linear-gradient(90deg,transparent,rgba(255,153,0,.4),transparent);
-      filter:blur(1px);
-    }
+    .bg-orbs::before{width:260px;height:260px;background:var(--orange);left:-70px;top:-50px}
+    .bg-orbs::after{width:220px;height:220px;background:var(--gold);right:-60px;top:20px}
 
     /* HEADER */
-    .header{
+    .header-wrap{
       position:sticky;top:0;z-index:1000;
       height:var(--header-h);
-      backdrop-filter:blur(18px);
-      background:rgba(4,7,12,.78);
-      border-bottom:1px solid rgba(255,255,255,.07);
+      background:rgba(3,7,12,.84);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,196,77,.12);
     }
-    .nav{
-      height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px
+    .header{
+      height:100%;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
     }
     .brand{
-      display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);
+      display:flex;align-items:center;gap:14px;
       min-width:0;
     }
     .brand-logo{
-      width:58px;height:58px;border-radius:50%;
-      border:2px solid rgba(255,191,73,.65);
-      overflow:hidden;
-      flex-shrink:0;
-      box-shadow:0 0 0 4px rgba(255,138,0,.08),0 8px 24px rgba(0,0,0,.35);
+      width:60px;height:60px;border-radius:50%;overflow:hidden;flex:0 0 auto;
+      border:2px solid rgba(255,196,77,.85);
+      box-shadow:0 0 0 4px rgba(255,138,0,.08), 0 0 28px rgba(255,138,0,.22);
       background:#111;
     }
     .brand-logo img{width:100%;height:100%;object-fit:cover}
-    .brand-text{min-width:0}
     .brand-title{
-      font-size:clamp(20px,2.2vw,34px);font-weight:900;line-height:1;margin:0;
-      letter-spacing:-.04em;
-      background:linear-gradient(90deg,#fff,#ffd174 45%,#ff9c1b 100%);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
+      font-size:clamp(22px,2.4vw,34px);
+      line-height:.95;
+      font-weight:900;
+      color:var(--gold);
+      letter-spacing:-.03em;
     }
+    .brand-title span{color:#fff}
     .brand-sub{
-      font-size:.76rem;color:#ced5df;opacity:.9;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+      margin-top:4px;
+      color:#d7dde6;
+      font-size:12px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .nav-links{
-      display:flex;align-items:center;gap:8px;flex-wrap:wrap
+
+    .menu-toggle{
+      display:none;
+      width:48px;height:48px;border-radius:14px;border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);color:#fff;cursor:pointer;
     }
-    .nav-links a,.admin-link{
-      text-decoration:none;color:#fff;font-weight:700;font-size:.97rem;
-      padding:14px 18px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.1);
-      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));
+
+    .nav{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    }
+    .nav a,.lang-btn{
+      padding:11px 16px;
+      border-radius:999px;
+      border:1px solid transparent;
+      background:rgba(255,255,255,.02);
+      color:#fff;
+      font-weight:800;
+      font-size:.96rem;
+      cursor:pointer;
       transition:.25s ease;
     }
-    .nav-links a:hover,.admin-link:hover{
-      transform:translateY(-2px);
-      border-color:rgba(255,170,50,.5);
-      box-shadow:0 12px 25px rgba(255,138,0,.15);
-      color:#ffd593;
+    .nav a:hover,.lang-btn:hover{
+      transform:translateY(-1px);
+      border-color:rgba(255,196,77,.32);
+      box-shadow:0 10px 24px rgba(255,138,0,.1);
+    }
+    .nav a.active{
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      border-color:transparent;
     }
     .admin-link{
-      background:linear-gradient(135deg,var(--orange),#ff9f1c);
-      color:#101010;border:none;
-      box-shadow:0 10px 24px rgba(255,138,0,.28);
+      background:linear-gradient(135deg,var(--orange),var(--orange2))!important;
+      border-color:transparent!important;
     }
-    .admin-link:hover{color:#000}
-    .lang-pill{
-      display:flex;align-items:center;gap:8px;
-      font-size:.82rem;padding:11px 14px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.09);color:#d7dde7
-    }
-    .hamburger{
+
+    .lang-switch{position:relative}
+    .lang-menu{
+      position:absolute;right:0;top:calc(100% + 8px);
+      min-width:160px;
+      background:#0a1220;
+      border:1px solid rgba(255,196,77,.2);
+      border-radius:16px;
+      padding:8px;
       display:none;
-      width:50px;height:50px;border-radius:14px;border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.03);color:#fff;font-size:1.1rem;
-      align-items:center;justify-content:center;cursor:pointer
-    }
-    .mobile-menu{
-      display:none;
-      position:absolute;left:16px;right:16px;top:calc(var(--header-h) - 4px);
-      background:linear-gradient(180deg,#09111c,#08111a);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:22px;
-      padding:14px;
       box-shadow:var(--shadow);
-      z-index:999;
     }
-    .mobile-menu.open{display:block}
-    .mobile-menu a{
-      display:block;text-decoration:none;color:#fff;
-      padding:14px 14px;border-radius:14px;font-weight:700
+    .lang-menu.open{display:block}
+    .lang-menu button{
+      width:100%;
+      text-align:left;
+      border:none;
+      background:transparent;
+      color:#fff;
+      padding:10px 12px;
+      border-radius:10px;
+      cursor:pointer;
     }
-    .mobile-menu a:hover{background:rgba(255,255,255,.05)}
+    .lang-menu button:hover{background:rgba(255,255,255,.05)}
 
     /* HERO */
-    .hero{
+    .hero{position:relative;padding:26px 0 20px}
+    .hero-panel{
       position:relative;
-      padding:38px 0 34px;
       overflow:hidden;
-    }
-    .hero-shell{
-      position:relative;
+      border-radius:34px;
+      padding:34px;
       background:
-        radial-gradient(circle at 72% 32%, rgba(255,170,40,.22), transparent 24%),
-        radial-gradient(circle at 30% 25%, rgba(242,193,78,.11), transparent 18%),
-        linear-gradient(135deg,rgba(11,16,25,.95),rgba(8,14,24,.95));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:36px;
+        radial-gradient(circle at 24% 40%, rgba(255,196,77,.18), transparent 18%),
+        radial-gradient(circle at 74% 35%, rgba(255,138,0,.16), transparent 22%),
+        linear-gradient(135deg, rgba(255,138,0,.12), rgba(8,17,31,.88) 34%, rgba(4,8,15,.96));
+      border:1px solid rgba(255,196,77,.18);
       box-shadow:var(--shadow);
-      overflow:hidden;
     }
-    .hero-shell:before,
-    .hero-shell:after{
-      content:"";position:absolute;pointer-events:none;z-index:0
+    .hero-bg{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,156,32,.15), transparent 22%),
+        linear-gradient(90deg, transparent 0%, rgba(255,140,0,.05) 35%, transparent 75%);
     }
-    .hero-shell:before{
-      inset:-10% auto auto -10%;
-      width:420px;height:420px;border-radius:50%;
-      background:radial-gradient(circle, rgba(255,138,0,.18), transparent 58%);
-      filter:blur(12px);
+    .hero-lines{
+      position:absolute;inset:-10% -5% auto -5%;
+      height:120%;
+      background:repeating-linear-gradient(
+        115deg,
+        transparent 0 120px,
+        rgba(255,164,45,.04) 120px 122px,
+        transparent 122px 170px
+      );
+      transform:skewY(-5deg);
     }
-    .hero-shell:after{
-      right:-120px;top:-70px;width:440px;height:440px;border-radius:50%;
-      background:radial-gradient(circle, rgba(242,193,78,.15), transparent 55%);
-      filter:blur(18px);
+    .hero-grid{
+      position:absolute;inset:0;
+      background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:24px 24px;
+      mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 86%);
+      opacity:.14;
     }
-    .hero-track{
-      display:flex;transition:transform .55s ease;will-change:transform;
-      position:relative;z-index:2;
+
+    .slides{
+      position:relative;
+      min-height:520px;
     }
     .slide{
-      min-width:100%;
+      position:absolute;inset:0;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .6s ease;
+    }
+    .slide.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+    .slide-inner{
       display:grid;
-      grid-template-columns: 1.02fr 1fr;
-      gap:32px;
-      padding:34px 34px 28px;
+      grid-template-columns:1.05fr 1fr;
+      gap:28px;
       align-items:center;
-      min-height:620px;
+      height:100%;
     }
-    .hero-media{
+    .hero-art{
       position:relative;
+      min-height:430px;
       display:flex;align-items:center;justify-content:center;
-      min-height:510px;
     }
-    .hero-media .ring1,
-    .hero-media .ring2,
-    .hero-media .ring3{
-      position:absolute;border-radius:50%;pointer-events:none
+    .ring-decor{
+      position:absolute;
+      width:min(455px,90%);
+      aspect-ratio:1;
+      border-radius:50%;
+      border:4px solid rgba(255,196,77,.95);
+      box-shadow:0 0 0 8px rgba(255,138,0,.06), 0 0 45px rgba(255,138,0,.22), inset 0 0 40px rgba(255,196,77,.08);
     }
-    .hero-media .ring1{
-      width:520px;height:520px;border:4px solid rgba(242,193,78,.85);
-      box-shadow:0 0 40px rgba(242,193,78,.18), inset 0 0 30px rgba(255,153,0,.08)
+    .ring-decor::before,
+    .ring-decor::after{
+      content:"";
+      position:absolute;border-radius:50%;
     }
-    .hero-media .ring2{
-      width:390px;height:390px;border:4px solid rgba(255,153,0,.7)
-    }
-    .hero-media .ring3{
-      width:610px;height:610px;
-      background:radial-gradient(circle, rgba(255,138,0,.18), transparent 48%);
-      filter:blur(15px);
-    }
-    .hero-photo-wrap{
-      position:relative;z-index:2;
-      width:min(88%,520px);
-      aspect-ratio:1/1;
+    .ring-decor::before{inset:12%;border:2px solid rgba(255,196,77,.34)}
+    .ring-decor::after{inset:24%;border:2px solid rgba(255,138,0,.28)}
+    .hero-main-image{
+      position:relative;
+      width:min(420px,84%);
+      aspect-ratio:1;
       border-radius:50%;
       overflow:hidden;
-      border:4px solid rgba(255,200,100,.8);
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.48),
-        0 0 55px rgba(255,153,0,.15);
+      border:3px solid rgba(255,196,77,.95);
+      box-shadow:0 0 35px rgba(255,138,0,.2);
       background:#111;
     }
-    .hero-photo-wrap img{
-      width:100%;height:100%;object-fit:cover;
-      object-position:center top;
+    .hero-main-image img{
+      width:100%;height:100%;object-fit:cover;object-position:center;
     }
-    .hero-badge{
-      font-size:.95rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-      color:#ffa32a;margin-bottom:16px;
+    .hero-social{
+      position:absolute;
+      bottom:14px;left:50%;transform:translateX(-50%);
+      display:flex;gap:14px;
+      font-size:28px;color:var(--gold);
+    }
+
+    .hero-copy{max-width:560px}
+    .eyebrow{
+      color:var(--gold);
+      font-weight:800;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:14px;
+      margin-bottom:10px;
     }
     .hero h1{
-      margin:0 0 16px;
-      font-size:clamp(38px,6vw,74px);
-      line-height:.96;
+      margin:0 0 10px;
+      font-size:clamp(42px,6vw,74px);
+      line-height:.97;
       font-weight:900;
-      letter-spacing:-.055em;
+      letter-spacing:-.05em;
     }
     .hero p{
-      font-size:clamp(1rem,1.4vw,1.18rem);
-      color:#d5dce6;
-      line-height:1.8;
-      max-width:640px;
-      margin:0 0 24px;
+      margin:0 0 22px;
+      font-size:clamp(17px,2vw,24px);
+      line-height:1.55;
+      color:#eef3fb;
     }
     .hero-actions{
-      display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px
+      display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px;
     }
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      min-height:52px;padding:0 22px;border:none;border-radius:16px;
-      font-weight:800;font-size:1rem;text-decoration:none;cursor:pointer;
-      transition:.22s ease;
+      border:none;border-radius:16px;
+      padding:15px 24px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(0,0,0,.28);
     }
     .btn-primary{
-      background:linear-gradient(135deg,var(--orange),#ffae31);
-      color:#111;
-      box-shadow:0 16px 30px rgba(255,138,0,.24);
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      color:#fff;
     }
-    .btn-secondary{
-      background:rgba(255,255,255,.03);
-      color:#fff;border:1px solid rgba(255,255,255,.16)
+    .btn-outline{
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      border:1px solid rgba(255,196,77,.34);
     }
-    .btn:hover{transform:translateY(-2px)}
-    .hero-mini-stats{
+    .hero-mini{
       display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-      max-width:610px
+      margin-top:16px;
     }
-    .mini-stat{
-      padding:16px 18px;border-radius:18px;
-      border:1px solid rgba(255,255,255,.07);
-      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-      min-height:95px;
+    .mini-card{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(8,16,29,.72);
+      border:1px solid rgba(255,196,77,.14);
     }
-    .mini-stat strong{
-      display:block;font-size:1.7rem;font-weight:900;color:#fff
-    }
-    .mini-stat span{color:#c8d0db;font-size:.92rem}
+    .mini-card strong{display:block;font-size:20px}
+    .mini-card span{font-size:12px;color:var(--muted)}
 
     .slider-controls{
-      position:absolute;inset:auto 24px 22px 24px;display:flex;align-items:center;justify-content:space-between;z-index:5;pointer-events:none
+      position:absolute;
+      inset:50% 0 auto 0;
+      transform:translateY(-50%);
+      display:flex;justify-content:space-between;
+      pointer-events:none;
+      padding:0 10px;
     }
-    .slider-btns{display:flex;gap:12px;pointer-events:auto}
     .slider-btn{
-      width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.16);
-      background:rgba(0,0,0,.34);color:#fff;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;font-size:1.15rem;
-      backdrop-filter:blur(10px);transition:.2s ease;
+      pointer-events:auto;
+      width:52px;height:52px;border-radius:50%;
+      border:1px solid rgba(255,196,77,.22);
+      background:rgba(0,0,0,.48);
+      color:#fff;
+      font-size:20px;
+      cursor:pointer;
     }
-    .slider-btn:hover{
-      transform:translateY(-2px);
-      border-color:rgba(255,166,42,.5);
-      color:#ffcc7f;
+    .slider-dots{
+      position:relative;z-index:2;
+      display:flex;justify-content:center;gap:10px;
+      margin-top:20px;
     }
-    .dots{display:flex;gap:10px;justify-content:center;pointer-events:auto}
     .dot{
-      width:11px;height:11px;border-radius:50%;
+      width:12px;height:12px;border-radius:50%;
       border:none;cursor:pointer;
-      background:rgba(255,255,255,.25);transition:.2s ease;
+      background:rgba(255,255,255,.34);
     }
-    .dot.active{width:34px;border-radius:999px;background:linear-gradient(90deg,var(--orange),var(--gold2))}
+    .dot.active{
+      background:linear-gradient(135deg,var(--orange),var(--gold));
+      transform:scale(1.08);
+    }
 
-    /* CATEGORY BOXES */
-    .cat-grid{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:18px
-    }
-    .cat-card{
-      position:relative;
-      padding:26px;border-radius:24px;
-      background:linear-gradient(180deg,rgba(9,17,28,.92),rgba(8,14,22,.92));
-      border:1px solid rgba(255,255,255,.07);
+    /* GRIDS */
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+
+    .feature-card,.news-card,.about-card,.login-card,.admin-card,.footer-card{
+      background:linear-gradient(180deg,rgba(7,12,22,.92),rgba(5,9,16,.96));
+      border:1px solid rgba(255,196,77,.16);
+      border-radius:24px;
       box-shadow:var(--shadow);
+    }
+
+    .feature-card{
+      padding:24px;
+      transition:.25s ease;
+      position:relative;
       overflow:hidden;
-      transition:.28s ease;
     }
-    .cat-card:before{
-      content:"";position:absolute;inset:auto -35% -35% auto;width:160px;height:160px;border-radius:50%;
-      background:radial-gradient(circle, rgba(255,138,0,.12), transparent 60%);
-      pointer-events:none
+    .feature-card:hover,.news-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(255,196,77,.3);
     }
-    .cat-card:hover{transform:translateY(-6px);border-color:rgba(255,153,0,.3)}
-    .cat-icon{
-      width:66px;height:66px;border-radius:18px;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,rgba(255,138,0,.18),rgba(242,193,78,.2));
-      color:#ffb54a;font-size:1.6rem;border:1px solid rgba(255,183,77,.24);margin-bottom:18px
+    .feature-card i{
+      font-size:34px;
+      color:var(--orange);
+      margin-bottom:16px;
     }
-    .cat-card h3{margin:0 0 10px;font-size:1.42rem}
-    .cat-card p{margin:0 0 16px;color:#c7d0dc;line-height:1.7}
-    .cat-card a{
-      color:#ffbb56;text-decoration:none;font-weight:800;display:inline-flex;align-items:center;gap:8px
+    .feature-card h3{
+      margin:0 0 10px;
+      font-size:26px;
+    }
+    .feature-card p{
+      margin:0 0 16px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+    .feature-link{
+      color:var(--orange);
+      font-weight:800;
     }
 
     /* NEWS */
-    .news-grid{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:20px
-    }
+    .news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .news-card{
-      background:linear-gradient(180deg,rgba(8,14,24,.96),rgba(7,12,20,.98));
-      border:1px solid rgba(255,255,255,.07);border-radius:24px;overflow:hidden;
-      box-shadow:var(--shadow);transition:.28s ease;display:flex;flex-direction:column
+      overflow:hidden;
+      display:flex;flex-direction:column;
     }
-    .news-card:hover{transform:translateY(-6px);border-color:rgba(255,153,0,.28)}
-    .news-thumb{
-      position:relative;aspect-ratio:16/11;overflow:hidden;background:#0b0b0b
+    .news-cover{
+      aspect-ratio:16/11;
+      overflow:hidden;
+      position:relative;
+      background:#111;
     }
-    .news-thumb img{width:100%;height:100%;object-fit:cover;transition:.42s ease}
-    .news-card:hover .news-thumb img{transform:scale(1.07)}
+    .news-cover img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .45s ease;
+    }
+    .news-card:hover .news-cover img{transform:scale(1.07)}
     .badge{
       position:absolute;left:14px;bottom:14px;
-      display:inline-flex;padding:7px 11px;border-radius:999px;
-      background:linear-gradient(135deg,var(--orange),#ffad31);
-      color:#131313;font-size:.72rem;font-weight:900;letter-spacing:.03em;text-transform:uppercase
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
     }
-    .news-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;height:100%}
-    .news-title{
-      font-size:1.15rem;line-height:1.35;font-weight:800;margin:0
+    .news-body{
+      padding:16px 16px 18px;
+      display:flex;flex-direction:column;gap:10px;height:100%;
     }
-    .news-desc{margin:0;color:#c6ceda;line-height:1.65;font-size:.95rem}
-    .news-meta{font-size:.87rem;color:#97a6bb}
+    .news-body h4{
+      margin:0;
+      font-size:24px;
+      line-height:1.3;
+    }
+    .news-body p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    .news-date{
+      font-size:13px;
+      color:#d8dee8;
+    }
     .news-actions{
-      display:flex;gap:10px;flex-wrap:wrap;margin-top:8px
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:8px;
     }
-    .small-btn{
-      height:38px;padding:0 14px;border-radius:12px;border:none;cursor:pointer;
-      font-weight:800
+    .tiny-btn{
+      border:none;border-radius:12px;
+      padding:9px 12px;
+      background:#13213a;
+      color:#fff;
+      cursor:pointer;
     }
-    .edit-btn{background:#162235;color:#ffd087;border:1px solid rgba(255,183,77,.2)}
-    .delete-btn{background:#2a1314;color:#ffb1b1;border:1px solid rgba(255,80,80,.18)}
-    .empty-box{
-      padding:28px;border-radius:22px;border:1px dashed rgba(255,255,255,.16);
-      color:#c7d0dc;background:rgba(255,255,255,.02)
+    .tiny-btn.delete{
+      background:rgba(255,95,87,.16);
+      color:#ffd4d1;
+    }
+    .tiny-btn.edit{
+      background:rgba(255,165,0,.14);
+      color:#ffd18c;
     }
 
     /* ABOUT */
-    .about-wrap{
-      display:grid;grid-template-columns:350px 1fr;gap:26px;align-items:stretch
+    .about-card{
+      padding:22px;
+      display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:center;
     }
-    .about-brand,.about-text{
-      background:linear-gradient(180deg,rgba(10,16,27,.94),rgba(7,13,22,.94));
-      border:1px solid rgba(255,255,255,.08);border-radius:30px;box-shadow:var(--shadow)
+    .about-logo{
+      width:180px;height:180px;border-radius:50%;overflow:hidden;margin:auto;
+      border:3px solid rgba(255,196,77,.82);
+      box-shadow:0 0 32px rgba(255,138,0,.2);
+      background:#111;
     }
-    .about-brand{padding:24px;display:flex;align-items:center;justify-content:center}
-    .about-brand .logo-big{
-      width:min(100%,290px);aspect-ratio:1/1;border-radius:50%;overflow:hidden;border:3px solid rgba(255,191,73,.75)
+    .about-logo img{width:100%;height:100%;object-fit:cover}
+    .about-text h3{
+      margin:0 0 12px;
+      font-size:38px;
     }
-    .logo-big img{width:100%;height:100%;object-fit:cover}
-    .about-text{padding:30px}
-    .about-text h3{font-size:2rem;margin:0 0 12px}
-    .about-text p{margin:0 0 26px;color:#d2d9e3;line-height:1.8}
-    .stats{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:14px
+    .about-text p{
+      margin:0 0 16px;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:17px;
     }
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .stat{
-      padding:22px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,196,77,.14);
     }
-    .stat strong{display:block;font-size:2rem;font-weight:900;color:#ffbe5d}
-    .stat span{color:#d2d9e3;font-size:.95rem}
+    .stat strong{
+      display:block;
+      font-size:34px;
+      color:var(--orange);
+      margin-bottom:6px;
+    }
 
-    /* ADMIN */
-    .admin-section{display:none}
-    .admin-section.visible{display:block}
+    /* LOGIN / ADMIN */
     .admin-wrap{
-      display:grid;grid-template-columns:340px 1fr;gap:24px
+      display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start;
     }
-    .panel{
-      background:linear-gradient(180deg,rgba(10,16,27,.96),rgba(8,14,22,.98));
-      border:1px solid rgba(255,255,255,.08);border-radius:28px;box-shadow:var(--shadow)
-    }
-    .panel-head{
-      padding:24px 24px 0
-    }
-    .panel-head h3{margin:0 0 8px;font-size:1.7rem}
-    .panel-head p{margin:0;color:#c3cedd}
-    .panel-body{padding:24px}
-    .form-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:16px
+    .login-card,.admin-card{padding:22px}
+    .panel-title{
+      margin:0 0 16px;
+      font-size:28px;
     }
     .field{
-      display:flex;flex-direction:column;gap:8px
+      display:flex;flex-direction:column;gap:8px;
+      margin-bottom:14px;
     }
-    .field.full{grid-column:1/-1}
-    .field label{font-weight:700;color:#dce3ee}
-    .input,.textarea,.select{
-      width:100%;border-radius:16px;border:1px solid rgba(255,255,255,.1);
-      background:#09111c;color:#fff;padding:15px 16px;font:inherit;outline:none
+    .label{
+      font-size:13px;
+      color:#dfe7f1;
+      font-weight:700;
     }
-    .textarea{min-height:150px;resize:vertical}
-    .input:focus,.textarea:focus,.select:focus{
-      border-color:rgba(255,170,50,.55);
-      box-shadow:0 0 0 3px rgba(255,138,0,.12)
+    .control,.control-file{
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,196,77,.18);
+      background:#08111f;
+      color:#fff;
+      padding:14px 15px;
+      outline:none;
+      transition:.25s ease;
     }
-    .form-actions{
-      display:flex;gap:12px;flex-wrap:wrap;margin-top:18px
+    .control:focus,.control-file:focus{
+      border-color:rgba(255,196,77,.45);
+      box-shadow:0 0 0 4px rgba(255,138,0,.08);
     }
-    .auth-box .btn,.panel .btn{min-width:130px}
-    .auth-note{
-      margin-top:14px;font-size:.92rem;color:#c8d0db;line-height:1.7
+    textarea.control{min-height:130px;resize:vertical}
+    .actions-col{
+      display:flex;flex-direction:column;gap:10px;
     }
-    .status-box{
-      margin-top:16px;padding:14px 16px;border-radius:16px;font-size:.95rem;display:none
+    .upload-grid{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:16px;
     }
-    .status-box.show{display:block}
-    .status-ok{background:rgba(41,184,102,.12);color:#95f1b6;border:1px solid rgba(41,184,102,.2)}
-    .status-err{background:rgba(255,86,86,.11);color:#ffb8b8;border:1px solid rgba(255,86,86,.15)}
-    .hidden{display:none !important}
+    .status{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      font-size:14px;
+      display:none;
+    }
+    .status.show{display:block}
+    .status.ok{
+      background:rgba(41,195,106,.14);
+      color:#9fe1b9;
+      border:1px solid rgba(41,195,106,.25);
+    }
+    .status.err{
+      background:rgba(255,95,87,.12);
+      color:#ffc8c4;
+      border:1px solid rgba(255,95,87,.22);
+    }
+    .admin-note{margin-top:10px;font-size:13px;color:var(--muted)}
+    .welcome-admin{
+      display:none;
+      margin-bottom:14px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,138,0,.08);
+      border:1px solid rgba(255,196,77,.16);
+    }
+    .welcome-admin.show{display:block}
+    [hidden]{display:none!important}
 
     /* SOCIAL */
-    .social-strip{
-      display:grid;grid-template-columns:repeat(5,1fr);gap:14px
-    }
+    .social-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
     .social-btn{
-      text-decoration:none;color:#fff;min-height:60px;border-radius:18px;
-      display:flex;align-items:center;justify-content:center;gap:12px;font-weight:800;
-      border:1px solid rgba(255,255,255,.08);transition:.22s ease;box-shadow:var(--shadow)
+      padding:16px 18px;
+      border-radius:18px;
+      color:#fff;
+      font-weight:800;
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      border:1px solid rgba(255,255,255,.08);
+      transition:.25s ease;
     }
-    .social-btn:hover{transform:translateY(-4px)}
-    .ig{background:linear-gradient(135deg,#5e2ca5,#e1306c,#f77737)}
-    .tt{background:linear-gradient(135deg,#111,#000)}
-    .yt{background:linear-gradient(135deg,#7d0b0b,#d91d1d)}
-    .wa{background:linear-gradient(135deg,#0f5e2f,#1fa54d)}
-    .fb{background:linear-gradient(135deg,#12356c,#1877f2)}
+    .social-btn:hover{transform:translateY(-3px)}
+    .instagram{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+    .tiktok{background:#000}
+    .youtube{background:#8f1111}
+    .whatsapp{background:#145c2f}
+    .facebook{background:#133f8d}
 
     /* FOOTER */
-    .footer{
-      padding:40px 0 18px;border-top:1px solid rgba(255,255,255,.08);
-      background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.25));
+    footer{
+      margin-top:24px;
+      border-top:1px solid rgba(255,196,77,.16);
+      background:linear-gradient(180deg,rgba(4,8,14,.84),rgba(2,5,10,.96));
     }
     .footer-grid{
-      display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:22px
+      display:grid;grid-template-columns:1.2fr .8fr .8fr .9fr;gap:24px;
+      padding:34px 0;
     }
-    .foot-card{
-      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:24px;padding:22px
+    .footer-card{
+      padding:0;
+      border:none;
+      box-shadow:none;
+      background:transparent;
     }
-    .foot-brand{
-      display:flex;align-items:center;gap:14px;margin-bottom:14px
+    .footer-brand{
+      display:flex;align-items:center;gap:14px;margin-bottom:14px;
     }
-    .foot-brand .logo{
-      width:66px;height:66px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,191,73,.7)
+    .footer-logo{
+      width:62px;height:62px;border-radius:50%;overflow:hidden;
+      border:2px solid rgba(255,196,77,.76);
+      background:#111;
     }
-    .foot-brand .logo img{width:100%;height:100%;object-fit:cover}
-    .foot-card h4{margin:0 0 14px;font-size:1.1rem}
-    .foot-card p,.foot-card li,.foot-card a{color:#ccd3de;line-height:1.8;text-decoration:none}
-    .foot-card ul{list-style:none;padding:0;margin:0}
-    .foot-social{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    .icon-link{
-      width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.08);
-      display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;background:rgba(255,255,255,.03)
+    .footer-logo img{width:100%;height:100%;object-fit:cover}
+    .footer-card h4{
+      margin:0 0 14px;
+      font-size:22px;
+      color:var(--gold);
     }
-    .footer-bottom{
-      margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);
-      text-align:center;color:#9eacbe;font-size:.94rem
+    .footer-links{
+      display:flex;flex-direction:column;gap:10px;
+      color:#d9e0eb;
+    }
+    .footer-links a:hover{color:var(--orange)}
+    .footer-social{
+      display:flex;gap:14px;flex-wrap:wrap;font-size:24px;margin-top:14px;
+    }
+    .footer-social a{color:#fff;opacity:.92}
+    .footer-social a:hover{color:var(--gold)}
+    .copyright{
+      padding:0 0 26px;
+      color:#bfc8d8;
+      text-align:center;
+      font-size:14px;
     }
 
     /* MODAL */
     .modal{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-      background:rgba(1,4,9,.76);backdrop-filter:blur(10px);z-index:1200;padding:20px
+      position:fixed;inset:0;
+      background:rgba(0,0,0,.66);
+      display:none;align-items:center;justify-content:center;
+      padding:18px;z-index:2000;
     }
     .modal.open{display:flex}
     .modal-card{
-      width:min(900px,100%);max-height:90vh;overflow:auto;
-      background:linear-gradient(180deg,#0c1522,#08111a);
-      border:1px solid rgba(255,255,255,.08);border-radius:28px;
-      box-shadow:var(--shadow)
+      width:min(940px,100%);
+      max-height:90vh;
+      overflow:auto;
+      background:linear-gradient(180deg,#08111f,#050b15);
+      border:1px solid rgba(255,196,77,.24);
+      border-radius:26px;
+      box-shadow:var(--shadow);
     }
     .modal-head{
-      padding:24px 24px 0;display:flex;justify-content:space-between;gap:16px;align-items:flex-start
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:18px 20px;
+      border-bottom:1px solid rgba(255,196,77,.14);
     }
-    .modal-head h3{margin:0;font-size:2rem}
-    .close-modal{
-      width:46px;height:46px;border-radius:14px;border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.03);color:#fff;cursor:pointer
+    .modal-body{padding:22px}
+    .modal-cover{
+      width:100%;
+      aspect-ratio:16/8;
+      border-radius:18px;
+      overflow:hidden;
+      margin-bottom:18px;
+      background:#111;
     }
-    .modal-body{padding:24px}
-    .modal-image{
-      width:100%;max-height:420px;object-fit:cover;border-radius:22px;margin-bottom:18px;background:#0d1016
+    .modal-cover img{width:100%;height:100%;object-fit:cover}
+    .modal-close{
+      background:rgba(255,255,255,.06);
+      border:none;color:#fff;
+      width:42px;height:42px;border-radius:50%;
+      cursor:pointer;
     }
-    .modal-meta{color:#94a4b8;margin-bottom:10px}
-    .modal-text{color:#d4dbe6;line-height:1.9;white-space:pre-wrap}
 
     /* RESPONSIVE */
-    @media (max-width:1150px){
-      .nav-links{display:none}
-      .hamburger{display:flex}
-      .slide{grid-template-columns:1fr;min-height:auto;padding:26px}
-      .hero-media{order:-1;min-height:420px}
-      .hero-mini-stats{max-width:none}
-      .cat-grid,.news-grid{grid-template-columns:repeat(2,1fr)}
-      .about-wrap,.admin-wrap{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:1100px){
+      .slide-inner,.about-card,.admin-wrap,.upload-grid,.footer-grid{
+        grid-template-columns:1fr;
+      }
+      .grid-4,.news-grid,.social-strip,.stats{
+        grid-template-columns:repeat(2,1fr);
+      }
+      .hero-art{order:-1;min-height:360px}
+      .hero-copy{max-width:none}
     }
 
-    @media (max-width:760px){
-      :root{--header-h:78px}
+    @media (max-width:860px){
+      :root{--header-h:76px}
+      .menu-toggle{
+        display:inline-flex;align-items:center;justify-content:center;
+      }
+      .nav{
+        position:absolute;
+        left:16px;right:16px;top:calc(100% + 10px);
+        background:#08111f;
+        border:1px solid rgba(255,196,77,.18);
+        border-radius:22px;
+        padding:12px;
+        display:none;
+        box-shadow:var(--shadow);
+      }
+      .nav.open{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+      }
+      .hero-panel{padding:22px}
+      .slides{min-height:720px}
+      .hero-mini{grid-template-columns:1fr}
+    }
+
+    @media (max-width:640px){
       .container{width:min(var(--max), calc(100% - 20px))}
-      .section{padding:62px 0}
-      .hero-shell{border-radius:26px}
-      .hero-media{min-height:320px}
-      .hero-media .ring1{width:320px;height:320px}
-      .hero-media .ring2{width:250px;height:250px}
-      .hero-media .ring3{width:390px;height:390px}
-      .hero-photo-wrap{width:min(86%,310px)}
-      .hero-mini-stats,.cat-grid,.news-grid,.stats,.social-strip,.footer-grid{grid-template-columns:1fr}
-      .form-grid{grid-template-columns:1fr}
-      .slider-controls{position:static;display:flex;justify-content:space-between;padding:0 18px 18px}
-      .section-title{flex-direction:column;align-items:flex-start}
-      .brand-sub{display:none}
-      .brand-title{font-size:1.9rem}
-      .footer{padding-top:22px}
+      .grid-4,.news-grid,.social-strip,.stats{
+        grid-template-columns:1fr;
+      }
+      .brand-title{font-size:18px}
+      .brand-sub{font-size:10px}
+      .brand-logo{width:52px;height:52px}
+      .hero h1{font-size:42px}
+      .hero p{font-size:17px}
+      .news-body h4{font-size:21px}
+      .about-text h3{font-size:32px}
+      .nav.open{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-  <div class="page-glow"></div>
-  <div class="lines"></div>
+  <div class="bg-orbs"></div>
 
-  <!-- ================= HEADER ================= -->
-  <header class="header">
-    <div class="container nav">
-      <a href="#home" class="brand">
-        <div class="brand-logo">
-          <img id="brandLogo" src="https://placehold.co/300x300/png?text=IrgenMediaHub" alt="IrgenMediaHub Logo">
-        </div>
-        <div class="brand-text">
-          <div class="brand-title">IRGEN MEDIAHUB</div>
-          <div class="brand-sub">News • Kurse Gjermanishti • Video Ide • Admin Panel</div>
+  <div class="header-wrap">
+    <header class="header container">
+      <a href="#home" class="brand clickable">
+        <div class="brand-logo"><img id="brandLogo" src="./logo.png" alt="IrgenMediaHub logo" /></div>
+        <div>
+          <div class="brand-title">IRGEN <span>MEDIAHUB</span></div>
+          <div class="brand-sub" data-i18n="brandSub">News • Kurse Gjermanishti • Video Ide • Admin Panel</div>
         </div>
       </a>
 
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#courses">Courses</a>
-        <a href="#ideas">Ideas Fitimi</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="admin-link" href="#adminPanel"><i class="fa-regular fa-user"></i> Admin Panel</a>
-        <div class="lang-pill"><i class="fa-solid fa-earth-europe"></i> SQ</div>
-      </nav>
-
-      <button id="hamburger" class="hamburger" aria-label="Menu">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <div id="mobileMenu" class="mobile-menu">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#courses">Courses</a>
-        <a href="#ideas">Ideas Fitimi</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="#adminPanel">Admin Panel</a>
-      </div>
-    </div>
-  </header>
+      <nav class="nav" id="navMenu">
+        <a href="#home" class="nav-link active" data-i18n="menuHome">Home</a>
+        <a href="#news" class="nav-link" data-i18n="menuNews">News</a>
+        <a href="#courses" class="nav-link" data-i18n="menuCourses">Courses</a>
+        <a href="#ideas" class="nav-link" data-i18n="menuIdeas">Ideas Fitimi</a>
+        <a href="#about" class="nav-link" data-i18n="menuAbout">About</a>
+        <a href="#contact" class="nav-link" data-i18n="menuContact">Contact</a>
+        <a href="#admin" class="nav-link admin-link" data-i18n="menuAdmin">Admin Panel</a>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-shell">
-        <div id="heroTrack" class="hero-track">
-          <!-- Slide 1 -->
-          <div class="slide">
-            <div class="hero-media">
-              <div class="ring3"></div>
-              <div class="ring1"></div>
-              <div class="ring2"></div>
-              <div class="hero-photo-wrap">
-                <img id="heroImage1" src="https://placehold.co/800x800/png?text=IrgenMediaHub" alt="IrgenMediaHub Branding">
-              </div>
-            </div>
-            <div class="hero-copy">
-              <div class="hero-badge">PORTALI YT I LAJMEVE & SUKSESIT</div>
-              <h1>Irgen<span class="accent">MediaHub</span></h1>
-              <p>Portali yt i lajmeve, kurseve të gjermanishtes A1 dhe ideve për fitim online. Një media brand modern, elegant dhe profesionist për informacion, edukim dhe zhvillim.</p>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="#news"><i class="fa-solid fa-newspaper"></i> Shiko Postimet</a>
-                <a class="btn btn-secondary" href="#socials"><i class="fa-solid fa-share-nodes"></i> Na Ndiq</a>
-              </div>
-              <div class="hero-mini-stats">
-                <div class="mini-stat"><strong>10K+</strong><span>Lexues çdo ditë</span></div>
-                <div class="mini-stat"><strong>500+</strong><span>Postime të publikuara</span></div>
-                <div class="mini-stat"><strong>50K+</strong><span>Ndjekës në rrjete</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="slide">
-            <div class="hero-media">
-              <div class="ring3"></div>
-              <div class="ring1"></div>
-              <div class="ring2"></div>
-              <div class="hero-photo-wrap">
-                <img id="heroImage2" src="https://placehold.co/800x800/png?text=IrgenMediaHub+News" alt="IrgenMediaHub News">
-              </div>
-            </div>
-            <div class="hero-copy">
-              <div class="hero-badge">LAJME • KURSE • VIDEO • IDE FITIMI</div>
-              <h1>Një faqe <span class="accent">premium</span> për rritje</h1>
-              <p>Shfaq lajmet më të reja, përmbajtje edukative për gjermanisht A1, video strategjike dhe ide reale për fitim online, në një eksperiencë luksoze dhe responsive.</p>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="#courses"><i class="fa-solid fa-graduation-cap"></i> Shiko Kurset</a>
-                <a class="btn btn-secondary" href="#about"><i class="fa-solid fa-circle-info"></i> Rreth Nesh</a>
-              </div>
-              <div class="hero-mini-stats">
-                <div class="mini-stat"><strong>A1</strong><span>Kurse gjermanishte</span></div>
-                <div class="mini-stat"><strong>Media</strong><span>Brand personal</span></div>
-                <div class="mini-stat"><strong>Admin</strong><span>Panel privat</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="slide">
-            <div class="hero-media">
-              <div class="ring3"></div>
-              <div class="ring1"></div>
-              <div class="ring2"></div>
-              <div class="hero-photo-wrap">
-                <img id="heroImage3" src="https://placehold.co/800x800/png?text=IrgenMediaHub+Admin" alt="IrgenMediaHub Admin">
-              </div>
-            </div>
-            <div class="hero-copy">
-              <div class="hero-badge">PANEL ADMIN MODERN + FIREBASE</div>
-              <h1>Publiko <span class="accent">vetë</span> postimet e tua</h1>
-              <p>Faqja publike shfaqet normalisht për të gjithë vizitorët, ndërsa vetëm admini i autorizuar mund të hyjë, të publikojë, ndryshojë dhe fshijë postimet në mënyrë profesionale.</p>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="#adminPanel"><i class="fa-solid fa-lock"></i> Hyr si Admin</a>
-                <a class="btn btn-secondary" href="#contact"><i class="fa-solid fa-envelope"></i> Kontakt</a>
-              </div>
-              <div class="hero-mini-stats">
-                <div class="mini-stat"><strong>Cloud</strong><span>Firebase ready</span></div>
-                <div class="mini-stat"><strong>Live</strong><span>Posts në kohë reale</span></div>
-                <div class="mini-stat"><strong>Safe</strong><span>Akses vetëm për admin</span></div>
-              </div>
-            </div>
+        <div class="lang-switch">
+          <button class="lang-btn" id="langBtn">
+            <i class="fa-solid fa-globe"></i> <span id="langCurrent">SQ</span>
+          </button>
+          <div class="lang-menu" id="langMenu">
+            <button data-lang="sq">Shqip</button>
+            <button data-lang="en">English</button>
+            <button data-lang="de">Deutsch</button>
+            <button data-lang="it">Italiano</button>
           </div>
         </div>
+      </nav>
+    </header>
+  </div>
 
-        <div class="slider-controls">
-          <div class="slider-btns">
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero section">
+      <div class="container">
+        <div class="hero-panel">
+          <div class="hero-bg"></div>
+          <div class="hero-lines"></div>
+          <div class="hero-grid"></div>
+
+          <div class="slides" id="heroSlides"></div>
+
+          <div class="slider-controls">
             <button class="slider-btn" id="prevSlide" aria-label="Previous slide">
               <i class="fa-solid fa-chevron-left"></i>
             </button>
@@ -718,331 +794,253 @@
               <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
-          <div class="dots" id="dots"></div>
+
+          <div class="slider-dots" id="sliderDots"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= CATEGORIES ================= -->
-  <section class="section" id="categories">
-    <div class="container">
-      <div class="section-title">
-        <h2>Seksionet <span class="accent">Kryesore</span></h2>
-        <div class="pill"><i class="fa-solid fa-sparkles"></i> Portal modern dhe elegant</div>
+    <!-- FEATURES -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-4" id="featureGrid"></div>
       </div>
+    </section>
 
-      <div class="cat-grid">
-        <article class="cat-card">
-          <div class="cat-icon"><i class="fa-regular fa-newspaper"></i></div>
-          <h3>Lajme</h3>
-          <p>Informohu me lajmet më të fundit nga Shqipëria, Gjermania dhe bota, në stil modern portal lajmesh.</p>
-          <a href="#news">Shiko më shumë <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-
-        <article class="cat-card" id="courses">
-          <div class="cat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3>Gjermanisht A1</h3>
-          <p>Mësime të plota për nivelin A1, alfabetin, numrat, përshëndetjet, ushtrimet dhe materialet bazë.</p>
-          <a href="#news">Mëso tani <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-
-        <article class="cat-card" id="ideas">
-          <div class="cat-icon"><i class="fa-regular fa-lightbulb"></i></div>
-          <h3>Ide Fitimi</h3>
-          <p>Ide reale për fitim online, social media, krijim përmbajtjeje, platforma dhe zhvillim personal.</p>
-          <a href="#news">Shiko ide <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-
-        <article class="cat-card">
-          <div class="cat-icon"><i class="fa-regular fa-circle-play"></i></div>
-          <h3>Video</h3>
-          <p>Video të dobishme, truke, strategji dhe prezantime të përmbajtjes për ndjekësit e tu.</p>
-          <a href="#socials">Shiko video <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
+    <!-- NEWS -->
+    <section id="news" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="topNews">TOP NEWS</h2>
+          <a href="#news" class="accent" data-i18n="seeAll">Shiko të gjitha →</a>
+        </div>
+        <div class="news-grid" id="newsGrid"></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= NEWS ================= -->
-  <section class="section" id="news">
-    <div class="container">
-      <div class="section-title">
-        <h2>TOP <span class="accent">NEWS</span></h2>
-        <a class="btn btn-secondary" href="#adminPanel">Admin Panel</a>
+    <!-- COURSES -->
+    <section id="courses" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="courseSectionTitle">Gjermanisht A1</h2>
+          <div class="pill">A1</div>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h3 data-i18n="courseSectionTitle">Gjermanisht A1</h3>
+          <p data-i18n="courseSectionText">Mësime nga alfabeti deri te bazat e gjuhës gjermane A1. Mund të shtosh postime, materiale dhe leksione nga paneli admin.</p>
+        </div>
       </div>
+    </section>
 
-      <div id="postsContainer" class="news-grid">
-        <!-- Dynamic + default posts -->
+    <!-- IDEAS -->
+    <section id="ideas" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="ideasSectionTitle">Ide Fitimi</h2>
+          <div class="pill" data-i18n="onlineGrowth">Rritje online</div>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-lightbulb"></i>
+          <h3 data-i18n="ideasSectionTitle">Ide Fitimi</h3>
+          <p data-i18n="ideasSectionText">Ndaj ide fitimi online, social media strategies, video tips dhe mundësi reale për të ndërtuar një audiencë dhe një brand personal.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= ABOUT ================= -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>Rreth <span class="accent">Nesh</span></h2>
-        <div class="pill"><i class="fa-solid fa-star"></i> Brand personal + portal media</div>
-      </div>
-
-      <div class="about-wrap">
-        <div class="about-brand">
-          <div class="logo-big">
-            <img id="aboutLogo" src="https://placehold.co/700x700/png?text=IrgenMediaHub" alt="IrgenMediaHub Logo">
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-card">
+          <div class="about-logo">
+            <img id="aboutLogo" src="./logo.png" alt="IrgenMediaHub" />
           </div>
-        </div>
-
-        <div class="about-text">
-          <h3>IrgenMediaHub</h3>
-          <p>IrgenMediaHub është platforma jonë për lajme, edukim, zhvillim personal dhe ide fitimi online. Qëllimi ynë është të informojmë, mësojmë dhe frymëzojmë çdo ditë me përmbajtje moderne, profesionale dhe të bukur vizualisht.</p>
-
-          <div class="stats">
-            <div class="stat"><strong>10K+</strong><span>Lexues</span></div>
-            <div class="stat"><strong>500+</strong><span>Postime</span></div>
-            <div class="stat"><strong>50K+</strong><span>Ndjekës</span></div>
-            <div class="stat"><strong>100%</strong><span>Përkushtim</span></div>
+          <div class="about-text">
+            <h3 data-i18n="aboutTitle">Rreth Nesh</h3>
+            <p data-i18n="aboutText">IrgenMediaHub është platforma jonë për lajme, edukim, zhvillim personal dhe ide fitimi online. Qëllimi ynë është të informojmë, mësojmë dhe frymëzojmë çdo ditë.</p>
+            <div class="stats" id="statsGrid"></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= ADMIN PANEL ================= -->
-  <section class="section" id="adminPanel">
-    <div class="container">
-      <div class="section-title">
-        <h2>Admin <span class="accent">Panel</span></h2>
-        <div class="pill"><i class="fa-solid fa-shield"></i> Vetëm për admin të autorizuar</div>
-      </div>
+    <!-- ADMIN -->
+    <section id="admin" class="section">
+      <div class="container">
+        <div class="admin-wrap">
+          <div class="login-card" id="loginCard">
+            <h3 class="panel-title" data-i18n="loginTitle">HYR / REGJISTROHU</h3>
 
-      <div class="admin-wrap">
-        <!-- Auth -->
-        <div class="panel auth-box">
-          <div class="panel-head">
-            <h3>Hyr / Regjistrohu</h3>
-            <p>Vizitorët shohin vetëm faqen publike. Vetëm admini i autorizuar shikon panelin e publikimit.</p>
-          </div>
-          <div class="panel-body">
             <div class="field">
-              <label for="authEmail">Email</label>
-              <input id="authEmail" class="input" type="email" placeholder="Vendos emailin">
+              <label class="label" for="emailInput">Email</label>
+              <input id="emailInput" class="control" type="email" placeholder="admin@email.com" />
             </div>
 
-            <div class="field" style="margin-top:14px">
-              <label for="authPassword">Password</label>
-              <input id="authPassword" class="input" type="password" placeholder="Vendos passwordin">
+            <div class="field">
+              <label class="label" for="passwordInput" data-i18n="password">Password</label>
+              <input id="passwordInput" class="control" type="password" placeholder="••••••••" />
             </div>
 
-            <div class="form-actions">
-              <button id="registerBtn" class="btn btn-secondary" type="button">Regjistrohu</button>
-              <button id="loginBtn" class="btn btn-primary" type="button">Hyr</button>
-              <button id="logoutBtn" class="btn btn-secondary" type="button">Dil</button>
+            <div class="actions-col">
+              <button class="btn btn-primary" id="loginBtn">
+                <i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="login">Hyr</span>
+              </button>
+              <button class="btn btn-outline" id="registerBtn">
+                <i class="fa-solid fa-user-plus"></i> <span data-i18n="register">Regjistrohu</span>
+              </button>
+              <button class="btn btn-outline" id="logoutBtn" hidden>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> <span data-i18n="logout">Dil</span>
+              </button>
             </div>
 
-            <div class="auth-note">
-              <strong>Admin email:</strong> ndrysho vlerën te <code>ADMIN_EMAIL</code> në script.<br>
-              Nëse Firebase s’është konfiguruar plotësisht, faqja publike prapë funksionon normalisht.
-            </div>
+            <div class="status" id="authStatus"></div>
+            <div class="admin-note" data-i18n="adminNote">Vetëm admini i autorizuar sheh panelin e publikimit.</div>
+          </div>
 
-            <div id="authStatus" class="status-box"></div>
+          <div class="admin-card" id="adminCard" hidden>
+            <div class="welcome-admin" id="welcomeAdmin"></div>
+            <h3 class="panel-title" data-i18n="uploadTitle">UPLOAD POSTIM I RI</h3>
+
+            <div class="upload-grid">
+              <div>
+                <div class="field">
+                  <label class="label" for="postCategory" data-i18n="category">Zgjidh Kategorinë</label>
+                  <select id="postCategory" class="control">
+                    <option value="Lajme">Lajme</option>
+                    <option value="Gjermanisht A1">Gjermanisht A1</option>
+                    <option value="Ide Fitimi">Ide Fitimi</option>
+                    <option value="Video">Video</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="postTitle" data-i18n="title">Titulli i postimit</label>
+                  <input id="postTitle" class="control" type="text" placeholder="Titulli i postimit" />
+                </div>
+
+                <div class="field">
+                  <label class="label" for="postExcerpt" data-i18n="excerpt">Përshkrimi i shkurtër</label>
+                  <input id="postExcerpt" class="control" type="text" placeholder="Përshkrimi i shkurtër" />
+                </div>
+
+                <div class="field">
+                  <label class="label" for="postContent" data-i18n="content">Teksti i plotë i postimit</label>
+                  <textarea id="postContent" class="control" placeholder="Shkruaj postimin..."></textarea>
+                </div>
+              </div>
+
+              <div>
+                <div class="field">
+                  <label class="label" for="postImageFile" data-i18n="uploadPhoto">Ngarko foto</label>
+                  <input id="postImageFile" class="control-file" type="file" accept="image/*" />
+                </div>
+
+                <div class="field">
+                  <label class="label" for="postImageUrl" data-i18n="orImageLink">Ose vendos linkun e fotos</label>
+                  <input id="postImageUrl" class="control" type="url" placeholder="https://linku-i-fotos.com" />
+                </div>
+
+                <button class="btn btn-primary" id="publishBtn">
+                  <i class="fa-solid fa-upload"></i> <span data-i18n="publish">Publiko Postimin</span>
+                </button>
+
+                <button class="btn btn-outline" id="cancelEditBtn" hidden style="margin-top:10px">
+                  <i class="fa-solid fa-xmark"></i> <span data-i18n="cancelEdit">Anulo edit</span>
+                </button>
+
+                <div class="status" id="adminStatus"></div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Admin Upload -->
-        <div id="adminSection" class="panel admin-section">
-          <div class="panel-head">
-            <h3>Upload Postimi i Ri</h3>
-            <p>Ky panel shfaqet vetëm për adminin e autorizuar. Publikimet dalin menjëherë te seksioni i lajmeve.</p>
-          </div>
-          <div class="panel-body">
-            <div class="form-grid">
-              <div class="field">
-                <label for="postCategory">Zgjidh Kategorinë</label>
-                <select id="postCategory" class="select">
-                  <option value="Lajme">Lajme</option>
-                  <option value="Gjermanisht A1">Gjermanisht A1</option>
-                  <option value="Ide Fitimi">Ide Fitimi</option>
-                  <option value="Video">Video</option>
-                </select>
-              </div>
+    <!-- SOCIAL -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="followUs">Na ndiq në rrjetet sociale</h2>
+        </div>
+        <div class="social-strip" id="socialStrip"></div>
+      </div>
+    </section>
+  </main>
 
-              <div class="field">
-                <label for="postTitle">Titulli i postimit</label>
-                <input id="postTitle" class="input" type="text" placeholder="Titulli i postimit">
-              </div>
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-card">
+        <div class="footer-brand">
+          <div class="footer-logo"><img id="footerLogo" src="./logo.png" alt="IrgenMediaHub logo" /></div>
+          <div class="brand-title" style="font-size:18px">IRGEN <span>MEDIAHUB</span></div>
+        </div>
+        <div class="muted" data-i18n="footerDesc">Portali yt i lajmeve, edukimit dhe ideve për sukses.</div>
+      </div>
 
-              <div class="field full">
-                <label for="postExcerpt">Përshkrim i shkurtër</label>
-                <input id="postExcerpt" class="input" type="text" placeholder="Përshkrimi i shkurtër">
-              </div>
+      <div class="footer-card">
+        <h4 data-i18n="footerLinks">Links</h4>
+        <div class="footer-links">
+          <a href="#home" data-i18n="menuHome">Home</a>
+          <a href="#news" data-i18n="menuNews">News</a>
+          <a href="#courses" data-i18n="menuCourses">Courses</a>
+          <a href="#ideas" data-i18n="menuIdeas">Ideas Fitimi</a>
+          <a href="#contact" data-i18n="menuContact">Contact</a>
+        </div>
+      </div>
 
-              <div class="field full">
-                <label for="postContent">Teksti i plotë i postimit</label>
-                <textarea id="postContent" class="textarea" placeholder="Shkruaj postimin..."></textarea>
-              </div>
+      <div class="footer-card">
+        <h4 data-i18n="footerCats">Kategoritë</h4>
+        <div class="footer-links">
+          <a href="#news">Lajme</a>
+          <a href="#courses">Gjermanisht A1</a>
+          <a href="#ideas">Ide Fitimi</a>
+          <a href="#news">Video</a>
+        </div>
+      </div>
 
-              <div class="field">
-                <label for="postImage">Ngarko foto</label>
-                <input id="postImage" class="input" type="file" accept="image/*">
-              </div>
-
-              <div class="field">
-                <label for="postImageUrl">Ose vendos link të fotos</label>
-                <input id="postImageUrl" class="input" type="text" placeholder="https://linku-i-fotos.com">
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button id="publishBtn" class="btn btn-primary" type="button"><i class="fa-solid fa-upload"></i> Publiko Postimin</button>
-              <button id="cancelEditBtn" class="btn btn-secondary hidden" type="button">Anulo Edit</button>
-            </div>
-
-            <div id="adminStatus" class="status-box"></div>
-          </div>
+      <div class="footer-card">
+        <h4 data-i18n="footerContact">Kontakt</h4>
+        <div class="footer-links">
+          <a href="mailto:info@irgenmediahub.com">info@irgenmediahub.com</a>
+          <div class="footer-social" id="footerSocial"></div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ================= SOCIALS ================= -->
-  <section class="section" id="socials">
-    <div class="container">
-      <div class="section-title">
-        <h2>Na Ndiq në <span class="accent">Rrjetet Sociale</span></h2>
-        <div class="pill"><i class="fa-solid fa-hashtag"></i> Branding personal + media</div>
-      </div>
-
-      <div class="social-strip">
-        <a id="instagramLink" class="social-btn ig" href="https://instagram.com/" target="_blank" rel="noopener">
-          <i class="fa-brands fa-instagram"></i> Instagram
-        </a>
-        <a id="tiktokLink" class="social-btn tt" href="https://tiktok.com/" target="_blank" rel="noopener">
-          <i class="fa-brands fa-tiktok"></i> TikTok
-        </a>
-        <a id="youtubeLink" class="social-btn yt" href="https://youtube.com/" target="_blank" rel="noopener">
-          <i class="fa-brands fa-youtube"></i> YouTube
-        </a>
-        <a id="whatsappLink" class="social-btn wa" href="https://wa.me/" target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
-        <a id="facebookLink" class="social-btn fb" href="https://facebook.com/" target="_blank" rel="noopener">
-          <i class="fa-brands fa-facebook-f"></i> Facebook
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer" id="contact">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="foot-card">
-          <div class="foot-brand">
-            <div class="logo">
-              <img id="footerLogo" src="https://placehold.co/400x400/png?text=IrgenMediaHub" alt="IrgenMediaHub">
-            </div>
-            <div>
-              <div class="brand-title" style="font-size:1.85rem">IRGEN</div>
-              <div style="font-weight:900;font-size:1.5rem;line-height:1;color:#fff">MEDIAHUB</div>
-            </div>
-          </div>
-          <p>Portali yt i lajmeve, edukimit dhe ideve për sukses. Një media brand modern me stil premium.</p>
-        </div>
-
-        <div class="foot-card">
-          <h4>Links</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#ideas">Ideas Fitimi</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="foot-card">
-          <h4>Kategoritë</h4>
-          <ul>
-            <li><a href="#news">Lajme</a></li>
-            <li><a href="#courses">Gjermanisht A1</a></li>
-            <li><a href="#ideas">Ide Fitimi</a></li>
-            <li><a href="#socials">Video</a></li>
-          </ul>
-        </div>
-
-        <div class="foot-card">
-          <h4>Kontakt</h4>
-          <p><i class="fa-regular fa-envelope"></i> info@irgenmediahub.com</p>
-          <div class="foot-social">
-            <a class="icon-link" href="https://instagram.com/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-            <a class="icon-link" href="https://tiktok.com/" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
-            <a class="icon-link" href="https://youtube.com/" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
-            <a class="icon-link" href="https://wa.me/" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
-            <a class="icon-link" href="https://facebook.com/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        © 2025 IrgenMediaHub. Të gjitha të drejtat janë të rezervuara.
-      </div>
+    <div class="container copyright">
+      © <span id="yearNow"></span> IrgenMediaHub. <span data-i18n="copyright">Të gjitha të drejtat janë të rezervuara.</span>
     </div>
   </footer>
 
-  <!-- ================= MODAL ================= -->
-  <div id="postModal" class="modal">
+  <!-- MODAL -->
+  <div class="modal" id="postModal">
     <div class="modal-card">
       <div class="modal-head">
         <div>
-          <div class="pill" id="modalBadge"><i class="fa-solid fa-tag"></i> Postim</div>
-          <h3 id="modalTitle">Titulli</h3>
+          <div class="eyebrow" id="modalBadge">Postim</div>
+          <h3 id="modalTitle" style="margin:6px 0 0;font-size:30px"></h3>
         </div>
-        <button id="closeModal" class="close-modal" aria-label="Close">
+        <button class="modal-close" id="modalClose" aria-label="Close">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" class="modal-image" src="" alt="Post Image">
-        <div id="modalMeta" class="modal-meta"></div>
-        <div id="modalExcerpt" class="muted" style="margin-bottom:14px"></div>
-        <div id="modalText" class="modal-text"></div>
+        <div class="modal-cover"><img id="modalImage" alt="post image" /></div>
+        <div class="news-date" id="modalDate"></div>
+        <p id="modalExcerpt" style="font-size:18px;color:#eef3fb"></p>
+        <div id="modalContent" style="line-height:1.85;color:#d6dfec"></div>
       </div>
     </div>
   </div>
 
-  <!-- ================= FIREBASE + APP ================= -->
   <script type="module">
-    /* ================= SETTINGS ================= */
-    const ADMIN_EMAIL = "VENDOS-EMAILIN-TEND-KETU";
-
-    const BRAND_LOGO = "https://placehold.co/900x900/png?text=Vendos+Foton+Tende";
-    const HERO_IMAGE = "https://placehold.co/900x900/png?text=Vendos+Foton+Tende";
-
-    const INSTAGRAM_LINK = "https://instagram.com/";
-    const TIKTOK_LINK = "https://tiktok.com/";
-    const YOUTUBE_LINK = "https://youtube.com/";
-    const WHATSAPP_LINK = "https://wa.me/";
-    const FACEBOOK_LINK = "https://facebook.com/";
-
-    // Firebase config - zëvendësoje kur të duash
-    const firebaseConfig = {
-      apiKey: "AIzaSyBNd1xn_-w9EQV-7q4YE_xQgdlVoczzrt0",
-      authDomain: "irgenmediahub-web.firebaseapp.com",
-      projectId: "irgenmediahub-web",
-      storageBucket: "irgenmediahub-web.firebasestorage.app",
-      messagingSenderId: "580157887229",
-      appId: "1:580157887229:web:1dadd027181beca506a494"
-    };
-
-    /* ================= IMPORTS ================= */
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import {
       getAuth,
-      createUserWithEmailAndPassword,
+      onAuthStateChanged,
       signInWithEmailAndPassword,
-      signOut,
-      onAuthStateChanged
+      createUserWithEmailAndPassword,
+      signOut
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import {
       getFirestore,
@@ -1063,450 +1061,535 @@
       getDownloadURL
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-    /* ================= DOM ================= */
-    const qs = (s, p=document) => p.querySelector(s);
-    const qsa = (s, p=document) => [...p.querySelectorAll(s)];
+    /* =========================
+      SETTINGS
+    ========================= */
+    const ADMIN_EMAIL = "vendos-admin-email@ketu.com";
 
-    const heroTrack = qs("#heroTrack");
-    const dotsWrap = qs("#dots");
-    const postsContainer = qs("#postsContainer");
-    const adminSection = qs("#adminSection");
+    const SOCIAL_LINKS = {
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/",
+      youtube: "https://youtube.com/",
+      whatsapp: "https://wa.me/355000000000",
+      facebook: "https://facebook.com/"
+    };
+
+    const firebaseConfig = {
+      apiKey: "",
+      authDomain: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: ""
+    };
+
+    const hasFirebaseConfig = Object.values(firebaseConfig).every(v => String(v).trim() !== "");
+
+    let app = null, auth = null, db = null, storage = null;
+    if (hasFirebaseConfig) {
+      try {
+        app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        db = getFirestore(app);
+        storage = getStorage(app);
+      } catch (err) {
+        console.error("Firebase init error:", err);
+      }
+    }
+
+    /* =========================
+      HELPERS
+    ========================= */
+    const qs = (s, p = document) => p.querySelector(s);
+    const qsa = (s, p = document) => [...p.querySelectorAll(s)];
+
+    function showStatus(el, msg, ok = true) {
+      el.textContent = msg;
+      el.className = `status show ${ok ? "ok" : "err"}`;
+      setTimeout(() => el.classList.remove("show"), 3200);
+    }
+
+    function formatDate(input) {
+      const date = input instanceof Date ? input : new Date(input || Date.now());
+      const locale = currentLang === "sq" ? "sq-AL" : currentLang;
+      return new Intl.DateTimeFormat(locale, { day: "2-digit", month: "long", year: "numeric" }).format(date);
+    }
+
+    /* =========================
+      TRANSLATIONS
+    ========================= */
+    const translations = {
+      sq: {
+        brandSub:"News • Kurse Gjermanishti • Video Ide • Admin Panel",
+        menuHome:"Home", menuNews:"News", menuCourses:"Courses", menuIdeas:"Ideas Fitimi", menuAbout:"About", menuContact:"Contact", menuAdmin:"Admin Panel",
+        topNews:"TOP NEWS", seeAll:"Shiko të gjitha →",
+        aboutTitle:"Rreth Nesh",
+        aboutText:"IrgenMediaHub është platforma jonë për lajme, edukim, zhvillim personal dhe ide fitimi online. Qëllimi ynë është të informojmë, mësojmë dhe frymëzojmë çdo ditë.",
+        loginTitle:"HYR / REGJISTROHU", password:"Password", login:"Hyr", register:"Regjistrohu", logout:"Dil",
+        adminNote:"Vetëm admini i autorizuar sheh panelin e publikimit.",
+        uploadTitle:"UPLOAD POSTIM I RI", category:"Zgjidh Kategorinë", title:"Titulli i postimit", excerpt:"Përshkrimi i shkurtër", content:"Teksti i plotë i postimit", uploadPhoto:"Ngarko foto", orImageLink:"Ose vendos linkun e fotos", publish:"Publiko Postimin", cancelEdit:"Anulo edit",
+        followUs:"Na ndiq në rrjetet sociale", footerDesc:"Portali yt i lajmeve, edukimit dhe ideve për sukses.", footerLinks:"Links", footerCats:"Kategoritë", footerContact:"Kontakt", copyright:"Të gjitha të drejtat janë të rezervuara.",
+        hero1eyebrow:"PORTALI YT I LAJMEVE & SUKSESIT", hero1title:"IrgenMediaHub", hero1text:"Lajme të fundit, Kurse Gjermanisht A1, Ide Fitimi Lekësh dhe shumë më tepër. Stacioni yt për informacion dhe zhvillim.",
+        hero2eyebrow:"KURSE MODERNE & PRAKTIKE", hero2title:"Mëso Gjermanisht A1", hero2text:"Nga alfabeti deri te fjalitë bazë, ushtrime, shpjegime dhe materiale që mund t’i shtosh e t’i menaxhosh vetë si admin.",
+        hero3eyebrow:"PANEL ADMIN MODERN + FIREBASE", hero3title:"Publiko vetë postimet e tua", hero3text:"Faqja publike shfaqet normalisht për të gjithë vizitorët, ndërsa vetëm admini i autorizuar mund të hyjë, të publikojë, ndryshojë dhe fshijë postimet.",
+        heroPrimary:"Shiko Postimet", heroSecondary:"Na Ndiq",
+        cloud:"Cloud", cloudText:"Firebase ready", live:"Live", liveText:"Posts në kohë reale", safe:"Safe", safeText:"Akses vetëm për adminin",
+        feature1Title:"Lajme", feature1Text:"Informohu me lajmet më të fundit nga bota dhe vendi.",
+        feature2Title:"Gjermanisht A1", feature2Text:"Mësime të plota për nivelin A1, fjalë, ushtrime dhe materiale.",
+        feature3Title:"Ide Fitimi", feature3Text:"Ide të reja për të fituar para online dhe zhvilluar veten.",
+        feature4Title:"Video", feature4Text:"Video të dobishme, truke dhe strategji suksesi.",
+        more:"Shiko më shumë →",
+        stat1:"Lexues çdo ditë", stat2:"Postime të publikuara", stat3:"Ndjekës në rrjete", stat4:"Përkushtim ndaj jush",
+        readMore:"Lexo më shumë", edit:"Edit", delete:"Delete",
+        courseSectionTitle:"Gjermanisht A1", courseSectionText:"Mësime nga alfabeti deri te bazat e gjuhës gjermane A1. Mund të shtosh postime, materiale dhe leksione nga paneli admin.",
+        ideasSectionTitle:"Ide Fitimi", ideasSectionText:"Ndaj ide fitimi online, social media strategies, video tips dhe mundësi reale për të ndërtuar një audiencë dhe një brand personal.",
+        onlineGrowth:"Rritje online"
+      },
+      en: {
+        brandSub:"News • German Courses • Video Ideas • Admin Panel",
+        menuHome:"Home", menuNews:"News", menuCourses:"Courses", menuIdeas:"Money Ideas", menuAbout:"About", menuContact:"Contact", menuAdmin:"Admin Panel",
+        topNews:"TOP NEWS", seeAll:"See all →",
+        aboutTitle:"About Us",
+        aboutText:"IrgenMediaHub is our platform for news, education, personal growth and online income ideas. Our goal is to inform, teach and inspire every day.",
+        loginTitle:"LOGIN / REGISTER", password:"Password", login:"Login", register:"Register", logout:"Logout",
+        adminNote:"Only the authorized admin can see the publishing panel.",
+        uploadTitle:"UPLOAD NEW POST", category:"Choose Category", title:"Post title", excerpt:"Short description", content:"Full post content", uploadPhoto:"Upload photo", orImageLink:"Or paste image link", publish:"Publish Post", cancelEdit:"Cancel edit",
+        followUs:"Follow us on social media", footerDesc:"Your portal for news, learning and success ideas.", footerLinks:"Links", footerCats:"Categories", footerContact:"Contact", copyright:"All rights reserved.",
+        hero1eyebrow:"YOUR NEWS & SUCCESS PORTAL", hero1title:"IrgenMediaHub", hero1text:"Latest news, German A1 courses, money-making ideas and much more. Your station for information and growth.",
+        hero2eyebrow:"MODERN & PRACTICAL COURSES", hero2title:"Learn German A1", hero2text:"From alphabet to basic sentences, exercises, explanations and materials that you can manage yourself as admin.",
+        hero3eyebrow:"MODERN ADMIN PANEL + FIREBASE", hero3title:"Publish your own posts", hero3text:"The public website shows normally to all visitors, while only the authorized admin can log in, publish, edit and delete posts.",
+        heroPrimary:"View Posts", heroSecondary:"Follow Us",
+        cloud:"Cloud", cloudText:"Firebase ready", live:"Live", liveText:"Real-time posts", safe:"Safe", safeText:"Admin-only access",
+        feature1Title:"News", feature1Text:"Stay informed with the latest news from your country and the world.",
+        feature2Title:"German A1", feature2Text:"Complete A1 lessons, vocabulary, exercises and materials.",
+        feature3Title:"Money Ideas", feature3Text:"Fresh ideas to earn online and grow yourself.",
+        feature4Title:"Video", feature4Text:"Useful videos, tricks and success strategies.",
+        more:"See more →",
+        stat1:"Daily readers", stat2:"Published posts", stat3:"Social followers", stat4:"Commitment",
+        readMore:"Read more", edit:"Edit", delete:"Delete",
+        courseSectionTitle:"German A1", courseSectionText:"Lessons from alphabet to the basics of German A1. You can add posts, materials and lessons from the admin panel.",
+        ideasSectionTitle:"Money Ideas", ideasSectionText:"Share online income ideas, social media strategies, video tips and real opportunities to build an audience and a personal brand.",
+        onlineGrowth:"Online growth"
+      },
+      de: {
+        brandSub:"News • Deutschkurse • Video-Ideen • Admin Panel",
+        menuHome:"Start", menuNews:"News", menuCourses:"Kurse", menuIdeas:"Einnahmeideen", menuAbout:"Über uns", menuContact:"Kontakt", menuAdmin:"Admin Panel",
+        topNews:"TOP NEWS", seeAll:"Alle sehen →",
+        aboutTitle:"Über uns",
+        aboutText:"IrgenMediaHub ist unsere Plattform für Nachrichten, Bildung, persönliche Entwicklung und Online-Verdienstideen. Unser Ziel ist es, jeden Tag zu informieren, zu lehren und zu inspirieren.",
+        loginTitle:"ANMELDEN / REGISTRIEREN", password:"Passwort", login:"Anmelden", register:"Registrieren", logout:"Abmelden",
+        adminNote:"Nur der autorisierte Admin sieht das Veröffentlichungs-Panel.",
+        uploadTitle:"NEUEN BEITRAG HOCHLADEN", category:"Kategorie wählen", title:"Beitragstitel", excerpt:"Kurze Beschreibung", content:"Vollständiger Beitrag", uploadPhoto:"Foto hochladen", orImageLink:"Oder Bildlink einfügen", publish:"Beitrag veröffentlichen", cancelEdit:"Bearbeitung abbrechen",
+        followUs:"Folge uns in den sozialen Netzwerken", footerDesc:"Dein Portal für News, Lernen und Erfolgsideen.", footerLinks:"Links", footerCats:"Kategorien", footerContact:"Kontakt", copyright:"Alle Rechte vorbehalten.",
+        hero1eyebrow:"DEIN PORTAL FÜR NEWS & ERFOLG", hero1title:"IrgenMediaHub", hero1text:"Aktuelle Nachrichten, Deutsch A1 Kurse, Online-Verdienstideen und vieles mehr. Deine Station für Information und Entwicklung.",
+        hero2eyebrow:"MODERNE & PRAKTISCHE KURSE", hero2title:"Lerne Deutsch A1", hero2text:"Vom Alphabet bis zu Grundsätzen, Übungen, Erklärungen und Materialien, die du selbst verwalten kannst.",
+        hero3eyebrow:"MODERNES ADMIN PANEL + FIREBASE", hero3title:"Veröffentliche deine Beiträge selbst", hero3text:"Die öffentliche Website wird allen Besuchern normal angezeigt, während nur der autorisierte Admin sich anmelden, veröffentlichen, bearbeiten und löschen kann.",
+        heroPrimary:"Beiträge ansehen", heroSecondary:"Folgen",
+        cloud:"Cloud", cloudText:"Firebase bereit", live:"Live", liveText:"Echtzeit-Beiträge", safe:"Sicher", safeText:"Nur für Admin",
+        feature1Title:"Nachrichten", feature1Text:"Bleibe mit den neuesten Nachrichten informiert.",
+        feature2Title:"Deutsch A1", feature2Text:"Komplette A1-Lektionen, Wörter und Übungen.",
+        feature3Title:"Einnahmeideen", feature3Text:"Neue Ideen, um online zu verdienen und dich zu entwickeln.",
+        feature4Title:"Video", feature4Text:"Nützliche Videos, Tricks und Strategien.",
+        more:"Mehr sehen →",
+        stat1:"Leser täglich", stat2:"Veröffentlichte Beiträge", stat3:"Follower", stat4:"Engagement",
+        readMore:"Mehr lesen", edit:"Bearbeiten", delete:"Löschen",
+        courseSectionTitle:"Deutsch A1", courseSectionText:"Lektionen vom Alphabet bis zu den Grundlagen von Deutsch A1. Du kannst Beiträge, Materialien und Lektionen im Admin-Panel hinzufügen.",
+        ideasSectionTitle:"Einnahmeideen", ideasSectionText:"Teile Online-Verdienstideen, Social-Media-Strategien, Video-Tipps und echte Möglichkeiten zum Aufbau einer Community und einer persönlichen Marke.",
+        onlineGrowth:"Online-Wachstum"
+      },
+      it: {
+        brandSub:"News • Corsi di tedesco • Idee video • Pannello Admin",
+        menuHome:"Home", menuNews:"News", menuCourses:"Corsi", menuIdeas:"Idee Guadagno", menuAbout:"Chi siamo", menuContact:"Contatto", menuAdmin:"Pannello Admin",
+        topNews:"TOP NEWS", seeAll:"Vedi tutto →",
+        aboutTitle:"Chi siamo",
+        aboutText:"IrgenMediaHub è la nostra piattaforma per notizie, educazione, crescita personale e idee di guadagno online. Il nostro obiettivo è informare, insegnare e ispirare ogni giorno.",
+        loginTitle:"ACCEDI / REGISTRATI", password:"Password", login:"Accedi", register:"Registrati", logout:"Esci",
+        adminNote:"Solo l’admin autorizzato può vedere il pannello di pubblicazione.",
+        uploadTitle:"CARICA NUOVO POST", category:"Scegli categoria", title:"Titolo del post", excerpt:"Descrizione breve", content:"Contenuto completo", uploadPhoto:"Carica foto", orImageLink:"Oppure inserisci il link immagine", publish:"Pubblica Post", cancelEdit:"Annulla modifica",
+        followUs:"Seguici sui social", footerDesc:"Il tuo portale per news, apprendimento e idee di successo.", footerLinks:"Link", footerCats:"Categorie", footerContact:"Contatto", copyright:"Tutti i diritti riservati.",
+        hero1eyebrow:"IL TUO PORTALE NEWS & SUCCESSO", hero1title:"IrgenMediaHub", hero1text:"Ultime notizie, corsi di tedesco A1, idee per guadagnare online e molto altro. Il tuo punto di riferimento per informazione e crescita.",
+        hero2eyebrow:"CORSI MODERNI E PRATICI", hero2title:"Impara Tedesco A1", hero2text:"Dall’alfabeto alle frasi base, esercizi, spiegazioni e materiali che puoi gestire da solo come admin.",
+        hero3eyebrow:"PANNELLO ADMIN MODERNO + FIREBASE", hero3title:"Pubblica i tuoi post", hero3text:"Il sito pubblico appare normalmente a tutti i visitatori, mentre solo l’admin autorizzato può accedere, pubblicare, modificare e cancellare i post.",
+        heroPrimary:"Vedi post", heroSecondary:"Seguici",
+        cloud:"Cloud", cloudText:"Pronto per Firebase", live:"Live", liveText:"Post in tempo reale", safe:"Sicuro", safeText:"Accesso solo admin",
+        feature1Title:"Notizie", feature1Text:"Resta aggiornato con le ultime notizie.",
+        feature2Title:"Tedesco A1", feature2Text:"Lezioni complete A1, parole ed esercizi.",
+        feature3Title:"Idee Guadagno", feature3Text:"Nuove idee per guadagnare online e crescere.",
+        feature4Title:"Video", feature4Text:"Video utili, trucchi e strategie.",
+        more:"Scopri di più →",
+        stat1:"Lettori al giorno", stat2:"Post pubblicati", stat3:"Follower social", stat4:"Impegno",
+        readMore:"Leggi di più", edit:"Modifica", delete:"Elimina",
+        courseSectionTitle:"Tedesco A1", courseSectionText:"Lezioni dall’alfabeto alle basi del tedesco A1. Puoi aggiungere post, materiali e lezioni dal pannello admin.",
+        ideasSectionTitle:"Idee Guadagno", ideasSectionText:"Condividi idee di guadagno online, strategie social, consigli video e opportunità reali per costruire un pubblico e un brand personale.",
+        onlineGrowth:"Crescita online"
+      }
+    };
+
+    let currentLang = "sq";
+    let currentUser = null;
+    let isAdmin = false;
+    let editingId = null;
+    let posts = [];
+
+    const starterPosts = [
+      {
+        id:"local-1",
+        category:"Lajme",
+        title:"Ekonomia shqiptare rritet me 3.8% në tremujorin e parë 2024",
+        excerpt:"Një panoramë e shkurtër e zhvillimeve pozitive ekonomike dhe ndikimit në treg.",
+        content:"Ky është një postim demo. Kur lidh Firebase, postimet do të ruhen në Firestore dhe do të dalin live këtu.",
+        imageUrl:"https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80",
+        date:"20 Maj, 2025"
+      },
+      {
+        id:"local-2",
+        category:"Lajme",
+        title:"BE miraton paketën e re ekonomike",
+        excerpt:"Lajmet më të fundit nga zhvillimet europiane me ndikim në rajon.",
+        content:"Ky është një postim demo për pamje premium si në referencë.",
+        imageUrl:"https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80",
+        date:"19 Maj, 2025"
+      },
+      {
+        id:"local-3",
+        category:"Ide Fitimi",
+        title:"5 Ide Fitimi Online që mund t’i fillosh që sot",
+        excerpt:"Mënyra praktike për të fituar online me mjete të thjeshta.",
+        content:"Përmbajtje demo. Mund ta zëvendësosh me postime reale.",
+        imageUrl:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+        date:"18 Maj, 2025"
+      },
+      {
+        id:"local-4",
+        category:"Gjermanisht A1",
+        title:"Mësimi 1: Përshëndetjet dhe prezantimi në gjermanisht",
+        excerpt:"Fillo hapat e parë në gjuhën gjermane me leksion të thjeshtë A1.",
+        content:"Përmbajtje demo për seksionin e kurseve Gjermanisht A1.",
+        imageUrl:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+        date:"17 Maj, 2025"
+      }
+    ];
+
+    function t(key){
+      return translations[currentLang]?.[key] || translations.sq[key] || key;
+    }
+
+    /* =========================
+      DOM
+    ========================= */
+    const navMenu = qs("#navMenu");
+    const menuToggle = qs("#menuToggle");
+    const langBtn = qs("#langBtn");
+    const langMenu = qs("#langMenu");
+    const langCurrent = qs("#langCurrent");
+    const heroSlides = qs("#heroSlides");
+    const sliderDots = qs("#sliderDots");
+    const featureGrid = qs("#featureGrid");
+    const newsGrid = qs("#newsGrid");
+    const statsGrid = qs("#statsGrid");
+    const socialStrip = qs("#socialStrip");
+    const footerSocial = qs("#footerSocial");
+
+    const emailInput = qs("#emailInput");
+    const passwordInput = qs("#passwordInput");
+    const loginBtn = qs("#loginBtn");
+    const registerBtn = qs("#registerBtn");
+    const logoutBtn = qs("#logoutBtn");
     const authStatus = qs("#authStatus");
+    const adminCard = qs("#adminCard");
+    const welcomeAdmin = qs("#welcomeAdmin");
     const adminStatus = qs("#adminStatus");
-
-    const authEmail = qs("#authEmail");
-    const authPassword = qs("#authPassword");
+    const publishBtn = qs("#publishBtn");
+    const cancelEditBtn = qs("#cancelEditBtn");
 
     const postCategory = qs("#postCategory");
     const postTitle = qs("#postTitle");
     const postExcerpt = qs("#postExcerpt");
     const postContent = qs("#postContent");
-    const postImage = qs("#postImage");
+    const postImageFile = qs("#postImageFile");
     const postImageUrl = qs("#postImageUrl");
-    const cancelEditBtn = qs("#cancelEditBtn");
 
     const modal = qs("#postModal");
-    const modalBadge = qs("#modalBadge");
-    const modalTitle = qs("#modalTitle");
-    const modalImage = qs("#modalImage");
-    const modalMeta = qs("#modalMeta");
-    const modalExcerpt = qs("#modalExcerpt");
-    const modalText = qs("#modalText");
+    const modalClose = qs("#modalClose");
 
-    const brandLogoEls = [qs("#brandLogo"), qs("#aboutLogo"), qs("#footerLogo"), qs("#heroImage1"), qs("#heroImage2"), qs("#heroImage3")];
+    /* =========================
+      RENDER
+    ========================= */
+    function applyTranslations(){
+      document.documentElement.lang = currentLang;
+      langCurrent.textContent = currentLang.toUpperCase();
 
-    /* ================= BRANDING ================= */
-    brandLogoEls.forEach(img => {
-      if(img) img.src = img.id.startsWith("hero") ? HERO_IMAGE : BRAND_LOGO;
-    });
+      qsa("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        el.textContent = t(key);
+      });
 
-    qs("#instagramLink").href = INSTAGRAM_LINK;
-    qs("#tiktokLink").href = TIKTOK_LINK;
-    qs("#youtubeLink").href = YOUTUBE_LINK;
-    qs("#whatsappLink").href = WHATSAPP_LINK;
-    qs("#facebookLink").href = FACEBOOK_LINK;
-
-    /* ================= MOBILE MENU ================= */
-    const hamburger = qs("#hamburger");
-    const mobileMenu = qs("#mobileMenu");
-
-    hamburger.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
-    });
-
-    qsa("#mobileMenu a").forEach(a => {
-      a.addEventListener("click", () => mobileMenu.classList.remove("open"));
-    });
-
-    /* ================= SLIDER ================= */
-    const totalSlides = qsa(".slide", heroTrack).length;
-    let currentSlide = 0;
-    let sliderTimer = null;
-
-    function renderDots() {
-      dotsWrap.innerHTML = "";
-      for(let i=0;i<totalSlides;i++){
-        const b = document.createElement("button");
-        b.className = "dot" + (i===currentSlide ? " active" : "");
-        b.addEventListener("click", () => {
-          currentSlide = i;
-          updateSlider();
-          restartSlider();
-        });
-        dotsWrap.appendChild(b);
-      }
+      renderHero();
+      renderFeatures();
+      renderStats();
+      renderSocials();
+      renderPosts();
+      updateWelcome();
     }
 
-    function updateSlider() {
-      heroTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-      qsa(".dot", dotsWrap).forEach((d,i) => d.classList.toggle("active", i===currentSlide));
-    }
+    function renderHero(){
+      const slides = [
+        { eyebrow:t("hero1eyebrow"), title:t("hero1title"), text:t("hero1text") },
+        { eyebrow:t("hero2eyebrow"), title:t("hero2title"), text:t("hero2text") },
+        { eyebrow:t("hero3eyebrow"), title:t("hero3title"), text:t("hero3text") }
+      ];
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateSlider();
-    }
+      heroSlides.innerHTML = slides.map((s,idx)=>`
+        <article class="slide ${idx===0?'active':''}">
+          <div class="slide-inner">
+            <div class="hero-art">
+              <div class="ring-decor"></div>
+              <div class="hero-main-image">
+                <img src="./logo.png" alt="IrgenMediaHub Hero">
+              </div>
+              <div class="hero-social">
+                <i class="fa-brands fa-tiktok"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-facebook"></i>
+              </div>
+            </div>
 
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateSlider();
-    }
+            <div class="hero-copy">
+              <div class="eyebrow">${s.eyebrow}</div>
+              <h1>${s.title}</h1>
+              <p>${s.text}</p>
 
-    function startSlider() {
-      sliderTimer = setInterval(nextSlide, 5000);
-    }
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#news"><i class="fa-solid fa-newspaper"></i> ${t("heroPrimary")}</a>
+                <a class="btn btn-outline" href="#contact"><i class="fa-solid fa-share-nodes"></i> ${t("heroSecondary")}</a>
+              </div>
 
-    function restartSlider() {
-      clearInterval(sliderTimer);
-      startSlider();
-    }
-
-    qs("#nextSlide").addEventListener("click", () => { nextSlide(); restartSlider(); });
-    qs("#prevSlide").addEventListener("click", () => { prevSlide(); restartSlider(); });
-
-    renderDots();
-    updateSlider();
-    startSlider();
-
-    /* ================= DEFAULT POSTS ================= */
-    const defaultPosts = [
-      {
-        id: "default-1",
-        category: "Lajme",
-        title: "Ekonomia shqiptare rritet me 3.8% në tremujorin e parë 2024",
-        excerpt: "Një përmbledhje e shkurtër mbi zhvillimet ekonomike dhe ndikimin në tregun lokal.",
-        content: "Ky është një postim demo për të shfaqur stilin e portalit. Kur të konfigurohet Firebase, postimet reale do të lexohen nga Firestore dhe do të shfaqen automatikisht këtu.",
-        imageUrl: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80",
-        date: "20 Maj, 2025",
-        createdAtMs: Date.now() - 100000
-      },
-      {
-        id: "default-2",
-        category: "Lajme",
-        title: "BE miraton paketën e re ekonomike, ushtriadë euro për projekte",
-        excerpt: "Detaje rreth nismave të reja, investimeve dhe ndikimit te vendet e rajonit.",
-        content: "Postim demo me foto ilustrative për seksionin TOP NEWS.",
-        imageUrl: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
-        date: "19 Maj, 2025",
-        createdAtMs: Date.now() - 200000
-      },
-      {
-        id: "default-3",
-        category: "Ide Fitimi",
-        title: "5 Ide Fitimi Online që mund t’i fillosh që sot",
-        excerpt: "Nga social media te freelancing, ja disa drejtime praktike për të nisur.",
-        content: "Ky është postim demo për seksionin e ideve të fitimit.",
-        imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-        date: "18 Maj, 2025",
-        createdAtMs: Date.now() - 300000
-      },
-      {
-        id: "default-4",
-        category: "Gjermanisht A1",
-        title: "Mësimi 1: Përshëndetjet dhe prezantimi në gjermanisht",
-        excerpt: "Nis mësimin e parë të gjermanishtes A1 me fjalët dhe shprehjet bazë.",
-        content: "Postim demo për kursin e gjermanishtes A1.",
-        imageUrl: "https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?auto=format&fit=crop&w=1200&q=80",
-        date: "17 Maj, 2025",
-        createdAtMs: Date.now() - 400000
-      }
-    ];
-
-    let posts = [...defaultPosts];
-    let editingId = null;
-    let currentUser = null;
-    let isAdmin = false;
-
-    function formatDate(ms) {
-      const d = new Date(ms || Date.now());
-      return d.toLocaleDateString("sq-AL", { day:"numeric", month:"long", year:"numeric" });
-    }
-
-    function escapeHtml(str="") {
-      return str
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-    }
-
-    function renderPosts() {
-      const sorted = [...posts].sort((a,b) => (b.createdAtMs || 0) - (a.createdAtMs || 0));
-
-      if(!sorted.length){
-        postsContainer.innerHTML = `<div class="empty-box">Nuk ka postime akoma.</div>`;
-        return;
-      }
-
-      postsContainer.innerHTML = sorted.map(post => `
-        <article class="news-card">
-          <div class="news-thumb">
-            <img src="${post.imageUrl || 'https://placehold.co/800x500/png?text=IrgenMediaHub'}" alt="${escapeHtml(post.title)}">
-            <span class="badge">${escapeHtml(post.category)}</span>
-          </div>
-          <div class="news-body">
-            <div class="news-meta">${escapeHtml(post.date || formatDate(post.createdAtMs))}</div>
-            <h3 class="news-title">${escapeHtml(post.title)}</h3>
-            <p class="news-desc">${escapeHtml(post.excerpt || '')}</p>
-            <div style="margin-top:auto"></div>
-            <div class="news-actions">
-              <button class="small-btn edit-btn read-post-btn" data-id="${post.id}">Lexo më shumë</button>
-              ${isAdmin ? `
-                <button class="small-btn edit-btn edit-post-btn" data-id="${post.id}">Edit</button>
-                <button class="small-btn delete-btn delete-post-btn" data-id="${post.id}">Delete</button>
-              ` : ``}
+              <div class="hero-mini">
+                <div class="mini-card"><strong>${t("cloud")}</strong><span>${t("cloudText")}</span></div>
+                <div class="mini-card"><strong>${t("live")}</strong><span>${t("liveText")}</span></div>
+                <div class="mini-card"><strong>${t("safe")}</strong><span>${t("safeText")}</span></div>
+              </div>
             </div>
           </div>
         </article>
       `).join("");
 
-      qsa(".read-post-btn").forEach(btn => {
-        btn.addEventListener("click", () => openPost(btn.dataset.id));
-      });
+      sliderDots.innerHTML = slides.map((_,idx)=>`<button class="dot ${idx===0?'active':''}" data-index="${idx}"></button>`).join("");
+      initSlider();
+    }
 
-      if(isAdmin){
-        qsa(".edit-post-btn").forEach(btn => {
-          btn.addEventListener("click", () => startEdit(btn.dataset.id));
-        });
+    function renderFeatures(){
+      const features = [
+        {icon:"fa-newspaper", title:t("feature1Title"), text:t("feature1Text"), href:"#news"},
+        {icon:"fa-graduation-cap", title:t("feature2Title"), text:t("feature2Text"), href:"#courses"},
+        {icon:"fa-lightbulb", title:t("feature3Title"), text:t("feature3Text"), href:"#ideas"},
+        {icon:"fa-circle-play", title:t("feature4Title"), text:t("feature4Text"), href:"#news"}
+      ];
 
-        qsa(".delete-post-btn").forEach(btn => {
-          btn.addEventListener("click", () => removePost(btn.dataset.id));
-        });
+      featureGrid.innerHTML = features.map(f=>`
+        <a class="feature-card clickable" href="${f.href}">
+          <i class="fa-solid ${f.icon}"></i>
+          <h3>${f.title}</h3>
+          <p>${f.text}</p>
+          <span class="feature-link">${t("more")}</span>
+        </a>
+      `).join("");
+    }
+
+    function renderStats(){
+      const stats = [
+        ["10K+", t("stat1")],
+        ["500+", t("stat2")],
+        ["50K+", t("stat3")],
+        ["100%", t("stat4")]
+      ];
+
+      statsGrid.innerHTML = stats.map(s=>`
+        <div class="stat">
+          <strong>${s[0]}</strong>
+          <span>${s[1]}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderSocials(){
+      const socials = [
+        ["instagram","fa-instagram","Instagram"],
+        ["tiktok","fa-tiktok","TikTok"],
+        ["youtube","fa-youtube","YouTube"],
+        ["whatsapp","fa-whatsapp","WhatsApp"],
+        ["facebook","fa-facebook-f","Facebook"]
+      ];
+
+      socialStrip.innerHTML = socials.map(([key,icon,label])=>`
+        <a class="social-btn ${key}" href="${SOCIAL_LINKS[key]}" target="_blank" rel="noreferrer">
+          <i class="fa-brands ${icon}"></i> ${label}
+        </a>
+      `).join("");
+
+      footerSocial.innerHTML = socials.map(([key,icon,label])=>`
+        <a href="${SOCIAL_LINKS[key]}" target="_blank" aria-label="${label}">
+          <i class="fa-brands ${icon}"></i>
+        </a>
+      `).join("");
+    }
+
+    function renderPosts(){
+      const visiblePosts = posts.length ? posts : starterPosts;
+
+      newsGrid.innerHTML = visiblePosts.map((p,index)=>`
+        <article class="news-card">
+          <div class="news-cover">
+            <img src="${p.imageUrl}" alt="${p.title}">
+            <div class="badge">${p.category}</div>
+          </div>
+          <div class="news-body">
+            <h4>${p.title}</h4>
+            <div class="news-date">${p.date || formatDate(Date.now())}</div>
+            <p>${p.excerpt || ""}</p>
+            <div class="news-actions">
+              <button class="tiny-btn read-post" data-id="${p.id}">${t("readMore")}</button>
+              ${isAdmin ? `<button class="tiny-btn edit edit-post" data-id="${p.id}">${t("edit")}</button>` : ""}
+              ${isAdmin ? `<button class="tiny-btn delete delete-post" data-id="${p.id}">${t("delete")}</button>` : ""}
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function updateWelcome(){
+      if(isAdmin && currentUser){
+        welcomeAdmin.classList.add("show");
+        welcomeAdmin.innerHTML = `<strong>Admin:</strong> ${currentUser.email}<br><span class="muted" style="font-size:13px">Paneli i publikimit është aktiv.</span>`;
+      } else {
+        welcomeAdmin.classList.remove("show");
       }
     }
 
-    function openPost(id){
-      const post = posts.find(p => String(p.id) === String(id));
-      if(!post) return;
+    function setAdminUI(admin){
+      isAdmin = admin;
+      adminCard.hidden = !admin;
+      logoutBtn.hidden = !currentUser;
+      updateWelcome();
+      renderPosts();
+    }
+
+    /* =========================
+      POSTS / MODAL
+    ========================= */
+    function openModal(post){
+      qs("#modalBadge").textContent = post.category;
+      qs("#modalTitle").textContent = post.title;
+      qs("#modalImage").src = post.imageUrl;
+      qs("#modalDate").textContent = post.date || formatDate(Date.now());
+      qs("#modalExcerpt").textContent = post.excerpt || "";
+      qs("#modalContent").innerHTML = (post.content || "").split("\n").map(line=>`<p>${line}</p>`).join("");
       modal.classList.add("open");
-      modalBadge.innerHTML = `<i class="fa-solid fa-tag"></i> ${escapeHtml(post.category)}`;
-      modalTitle.textContent = post.title;
-      modalImage.src = post.imageUrl || "https://placehold.co/1200x700/png?text=IrgenMediaHub";
-      modalMeta.textContent = post.date || formatDate(post.createdAtMs);
-      modalExcerpt.textContent = post.excerpt || "";
-      modalText.textContent = post.content || "";
       document.body.style.overflow = "hidden";
     }
 
-    function closePost(){
+    function closeModal(){
       modal.classList.remove("open");
       document.body.style.overflow = "";
     }
 
-    qs("#closeModal").addEventListener("click", closePost);
-    modal.addEventListener("click", (e) => {
-      if(e.target === modal) closePost();
-    });
-
-    /* ================= FIREBASE SETUP ================= */
-    const hasValidFirebaseConfig =
-      firebaseConfig &&
-      firebaseConfig.apiKey &&
-      firebaseConfig.authDomain &&
-      firebaseConfig.projectId &&
-      firebaseConfig.storageBucket &&
-      firebaseConfig.messagingSenderId &&
-      firebaseConfig.appId;
-
-    let app = null;
-    let auth = null;
-    let db = null;
-    let storage = null;
-
-    if(hasValidFirebaseConfig){
-      try{
-        app = initializeApp(firebaseConfig);
-        auth = getAuth(app);
-        db = getFirestore(app);
-        storage = getStorage(app);
-      }catch(err){
-        console.error("Firebase init error:", err);
-      }
-    }
-
-    function showStatus(el, msg, ok=false){
-      el.textContent = msg;
-      el.className = `status-box show ${ok ? "status-ok" : "status-err"}`;
-    }
-
-    function clearStatus(el){
-      el.textContent = "";
-      el.className = "status-box";
-    }
-
-    function setAdminVisible(show){
-      adminSection.classList.toggle("visible", show);
-      isAdmin = !!show;
-      renderPosts();
-    }
-
-    async function loadFirestorePosts(){
-      if(!db) return;
-      try{
-        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-        const snap = await getDocs(q);
-
-        const firestorePosts = snap.docs.map(docSnap => {
-          const d = docSnap.data();
-          return {
-            id: docSnap.id,
-            category: d.category || "Lajme",
-            title: d.title || "",
-            excerpt: d.excerpt || "",
-            content: d.content || "",
-            imageUrl: d.imageUrl || "",
-            date: d.date || formatDate(d.createdAt?.toMillis?.() || Date.now()),
-            createdAtMs: d.createdAt?.toMillis?.() || Date.now(),
-            source: "firestore"
-          };
-        });
-
-        posts = firestorePosts.length ? firestorePosts : [...defaultPosts];
-        renderPosts();
-      }catch(err){
-        console.error(err);
-        posts = [...defaultPosts];
-        renderPosts();
-      }
-    }
-
-    async function uploadImageIfNeeded(file){
-      if(!file || !storage) return "";
-      const filename = `posts/${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
-      const storageRef = ref(storage, filename);
-      await uploadBytes(storageRef, file);
-      return await getDownloadURL(storageRef);
-    }
-
     function resetForm(){
+      editingId = null;
       postCategory.value = "Lajme";
       postTitle.value = "";
       postExcerpt.value = "";
       postContent.value = "";
-      postImage.value = "";
+      postImageFile.value = "";
       postImageUrl.value = "";
-      editingId = null;
-      cancelEditBtn.classList.add("hidden");
-      qs("#publishBtn").innerHTML = `<i class="fa-solid fa-upload"></i> Publiko Postimin`;
+      cancelEditBtn.hidden = true;
+      publishBtn.querySelector("span").textContent = t("publish");
     }
 
-    function startEdit(id){
-      const post = posts.find(p => String(p.id) === String(id));
-      if(!post) return;
-      editingId = post.id;
-      postCategory.value = post.category || "Lajme";
-      postTitle.value = post.title || "";
-      postExcerpt.value = post.excerpt || "";
-      postContent.value = post.content || "";
-      postImageUrl.value = post.imageUrl || "";
-      cancelEditBtn.classList.remove("hidden");
-      qs("#publishBtn").innerHTML = `<i class="fa-solid fa-pen"></i> Ruaj Ndryshimet`;
-      location.hash = "#adminPanel";
-    }
-
-    cancelEditBtn.addEventListener("click", resetForm);
-
-    async function removePost(id){
-      const post = posts.find(p => String(p.id) === String(id));
-      if(!post) return;
-      if(!isAdmin) return;
-      if(!confirm("A je i sigurt që do ta fshish këtë postim?")) return;
-
-      try{
-        if(post.source === "firestore" && db){
-          await deleteDoc(doc(db, "posts", post.id));
-          await loadFirestorePosts();
-        }else{
-          posts = posts.filter(p => String(p.id) !== String(id));
-          renderPosts();
-        }
-        showStatus(adminStatus, "Postimi u fshi me sukses.", true);
-      }catch(err){
-        console.error(err);
-        showStatus(adminStatus, "Gabim gjatë fshirjes së postimit.");
-      }
-    }
-
-    async function handlePublish(){
-      clearStatus(adminStatus);
-
-      if(!isAdmin){
-        showStatus(adminStatus, "Vetëm admini mund të publikojë postime.");
+    async function loadPosts(){
+      if(!db){
+        posts = [];
+        renderPosts();
         return;
       }
+
+      try{
+        const snap = await getDocs(query(collection(db,"posts"), orderBy("createdAt","desc")));
+        posts = snap.docs.map(d => {
+          const data = d.data();
+          return {
+            id:d.id,
+            ...data,
+            date: data.createdAt?.toDate ? formatDate(data.createdAt.toDate()) : (data.date || formatDate(Date.now()))
+          };
+        });
+        renderPosts();
+      }catch(err){
+        console.error(err);
+        posts = [];
+        renderPosts();
+      }
+    }
+
+    async function fileToDataUrl(file){
+      return new Promise((resolve,reject)=>{
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function uploadImageMaybe(file){
+      if(!file) return "";
+      if(storage){
+        const fileRef = ref(storage, `posts/${Date.now()}-${file.name}`);
+        await uploadBytes(fileRef, file);
+        return await getDownloadURL(fileRef);
+      }
+      return await fileToDataUrl(file);
+    }
+
+    async function savePost(){
+      if(!isAdmin) return showStatus(adminStatus, "Nuk ke akses admin.", false);
 
       const category = postCategory.value.trim();
       const title = postTitle.value.trim();
       const excerpt = postExcerpt.value.trim();
       const content = postContent.value.trim();
-      const imageLink = postImageUrl.value.trim();
-      const imageFile = postImage.files[0];
+      const file = postImageFile.files[0];
+      const imageUrlInput = postImageUrl.value.trim();
 
-      if(!title || !excerpt || !content){
-        showStatus(adminStatus, "Plotëso titullin, përshkrimin dhe tekstin e postimit.");
-        return;
+      if(!category || !title || !excerpt || !content){
+        return showStatus(adminStatus, "Plotëso të gjitha fushat kryesore.", false);
       }
 
       try{
-        let finalImageUrl = imageLink;
+        let imageUrl = imageUrlInput;
+        if(file) imageUrl = await uploadImageMaybe(file);
+        if(!imageUrl) imageUrl = starterPosts[Math.floor(Math.random()*starterPosts.length)].imageUrl;
 
-        if(imageFile){
-          if(!storage){
-            showStatus(adminStatus, "Firebase Storage nuk është aktiv.");
-            return;
-          }
-          finalImageUrl = await uploadImageIfNeeded(imageFile);
-        }
-
-        if(!finalImageUrl){
-          finalImageUrl = "https://placehold.co/1200x700/png?text=IrgenMediaHub";
-        }
+        const payload = {
+          category, title, excerpt, content, imageUrl,
+          date: formatDate(Date.now()),
+          createdAt: db ? serverTimestamp() : Date.now()
+        };
 
         if(db){
           if(editingId){
-            const postRef = doc(db, "posts", editingId);
-            await updateDoc(postRef, {
-              category,
-              title,
-              excerpt,
-              content,
-              imageUrl: finalImageUrl,
-              date: formatDate(Date.now())
-            });
+            await updateDoc(doc(db,"posts",editingId), payload);
             showStatus(adminStatus, "Postimi u përditësua me sukses.", true);
           }else{
-            await addDoc(collection(db, "posts"), {
-              category,
-              title,
-              excerpt,
-              content,
-              imageUrl: finalImageUrl,
-              date: formatDate(Date.now()),
-              createdAt: serverTimestamp()
-            });
+            await addDoc(collection(db,"posts"), payload);
             showStatus(adminStatus, "Postimi u publikua me sukses.", true);
           }
-          await loadFirestorePosts();
-        }else{
-          // fallback local demo
+          await loadPosts();
+        } else {
           if(editingId){
-            posts = posts.map(p => String(p.id) === String(editingId) ? {
-              ...p, category, title, excerpt, content, imageUrl: finalImageUrl, date: formatDate(Date.now())
-            } : p);
+            posts = posts.map(p => p.id === editingId ? { ...p, ...payload } : p);
             showStatus(adminStatus, "Postimi u përditësua lokalisht.", true);
-          }else{
-            posts.unshift({
-              id: "local-" + Date.now(),
-              category,
-              title,
-              excerpt,
-              content,
-              imageUrl: finalImageUrl,
-              date: formatDate(Date.now()),
-              createdAtMs: Date.now(),
-              source: "local"
-            });
+          } else {
+            posts.unshift({ id:`local-${Date.now()}`, ...payload });
             showStatus(adminStatus, "Postimi u publikua lokalisht.", true);
           }
           renderPosts();
@@ -1515,108 +1598,224 @@
         resetForm();
       }catch(err){
         console.error(err);
-        showStatus(adminStatus, "Gabim gjatë publikimit të postimit.");
+        showStatus(adminStatus, "Gabim gjatë publikimit.", false);
       }
     }
 
-    qs("#publishBtn").addEventListener("click", handlePublish);
+    function startEdit(id){
+      const source = posts.length ? posts : starterPosts;
+      const post = source.find(p => String(p.id) === String(id));
+      if(!post) return;
 
-    /* ================= AUTH ================= */
-    async function handleRegister(){
-      clearStatus(authStatus);
-      if(!auth){
-        showStatus(authStatus, "Firebase Authentication nuk është aktiv.");
-        return;
+      editingId = post.id;
+      postCategory.value = post.category || "Lajme";
+      postTitle.value = post.title || "";
+      postExcerpt.value = post.excerpt || "";
+      postContent.value = post.content || "";
+      postImageUrl.value = post.imageUrl || "";
+      cancelEditBtn.hidden = false;
+      publishBtn.querySelector("span").textContent = t("edit");
+      document.getElementById("admin").scrollIntoView({behavior:"smooth"});
+    }
+
+    async function removePost(id){
+      if(!isAdmin) return;
+      if(!confirm("Ta fshij këtë postim?")) return;
+
+      try{
+        if(db && !String(id).startsWith("local-")){
+          await deleteDoc(doc(db,"posts",id));
+          await loadPosts();
+        } else {
+          posts = posts.filter(p => String(p.id) !== String(id));
+          renderPosts();
+        }
+        showStatus(adminStatus, "Postimi u fshi.", true);
+      }catch(err){
+        console.error(err);
+        showStatus(adminStatus, "Gabim gjatë fshirjes.", false);
       }
-      const email = authEmail.value.trim();
-      const password = authPassword.value.trim();
+    }
+
+    /* =========================
+      AUTH
+    ========================= */
+    async function doLogin(){
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
 
       if(!email || !password){
-        showStatus(authStatus, "Plotëso emailin dhe passwordin.");
+        return showStatus(authStatus, "Shkruaj email dhe password.", false);
+      }
+
+      if(!auth){
+        currentUser = { email };
+        setAdminUI(email.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+        showStatus(authStatus, hasFirebaseConfig ? "Firebase nuk u inicializua." : "Login demo aktiv. Vendos firebaseConfig për login real.", !hasFirebaseConfig);
         return;
       }
 
       try{
-        await createUserWithEmailAndPassword(auth, email, password);
-        showStatus(authStatus, "Llogaria u krijua me sukses.", true);
+        const res = await signInWithEmailAndPassword(auth,email,password);
+        currentUser = res.user;
+        setAdminUI(currentUser.email.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+        showStatus(authStatus, "U kyçe me sukses.", true);
       }catch(err){
         console.error(err);
-        showStatus(authStatus, err.message || "Gabim gjatë regjistrimit.");
+        showStatus(authStatus, "Login dështoi. Kontrollo email/password.", false);
       }
     }
 
-    async function handleLogin(){
-      clearStatus(authStatus);
-      if(!auth){
-        showStatus(authStatus, "Firebase Authentication nuk është aktiv.");
-        return;
-      }
-      const email = authEmail.value.trim();
-      const password = authPassword.value.trim();
+    async function doRegister(){
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
 
       if(!email || !password){
-        showStatus(authStatus, "Plotëso emailin dhe passwordin.");
-        return;
+        return showStatus(authStatus, "Shkruaj email dhe password.", false);
       }
-
-      try{
-        await signInWithEmailAndPassword(auth, email, password);
-        showStatus(authStatus, "Hyrja u krye me sukses.", true);
-      }catch(err){
-        console.error(err);
-        showStatus(authStatus, "Gabim gjatë hyrjes. Kontrollo email/password.");
+      if(password.length < 6){
+        return showStatus(authStatus, "Password duhet të ketë të paktën 6 karaktere.", false);
       }
-    }
-
-    async function handleLogout(){
-      clearStatus(authStatus);
       if(!auth){
-        showStatus(authStatus, "Firebase Authentication nuk është aktiv.");
-        return;
+        return showStatus(authStatus, "Vendos firebaseConfig për regjistrim real.", false);
       }
+
       try{
-        await signOut(auth);
-        showStatus(authStatus, "U bë logout me sukses.", true);
+        await createUserWithEmailAndPassword(auth,email,password);
+        showStatus(authStatus, "Llogaria u krijua. Tani mund të hysh.", true);
       }catch(err){
         console.error(err);
-        showStatus(authStatus, "Gabim gjatë daljes.");
+        showStatus(authStatus, "Regjistrimi dështoi.", false);
       }
     }
 
-    qs("#registerBtn").addEventListener("click", handleRegister);
-    qs("#loginBtn").addEventListener("click", handleLogin);
-    qs("#logoutBtn").addEventListener("click", handleLogout);
+    async function doLogout(){
+      if(auth){
+        try{ await signOut(auth); }catch(e){ console.error(e); }
+      }
+      currentUser = null;
+      setAdminUI(false);
+      showStatus(authStatus, "Dole nga llogaria.", true);
+    }
+
+    /* =========================
+      SLIDER
+    ========================= */
+    let slideIndex = 0;
+    let sliderTimer = null;
+
+    function activateSlide(idx){
+      const slides = qsa(".slide", heroSlides);
+      const dots = qsa(".dot", sliderDots);
+      if(!slides.length) return;
+
+      slideIndex = (idx + slides.length) % slides.length;
+      slides.forEach((s,i)=>s.classList.toggle("active", i === slideIndex));
+      dots.forEach((d,i)=>d.classList.toggle("active", i === slideIndex));
+    }
+
+    function nextSlide(){ activateSlide(slideIndex + 1); }
+    function prevSlide(){ activateSlide(slideIndex - 1); }
+
+    function initSlider(){
+      clearInterval(sliderTimer);
+      sliderTimer = setInterval(nextSlide, 4200);
+
+      qsa(".dot", sliderDots).forEach(dot => {
+        dot.onclick = () => activateSlide(Number(dot.dataset.index));
+      });
+    }
+
+    /* =========================
+      EVENTS
+    ========================= */
+    menuToggle.addEventListener("click", ()=> navMenu.classList.toggle("open"));
+
+    qsa(".nav-link").forEach(link => link.addEventListener("click", ()=> navMenu.classList.remove("open")));
+
+    langBtn.addEventListener("click", (e)=>{
+      e.stopPropagation();
+      langMenu.classList.toggle("open");
+    });
+
+    qsa("[data-lang]", langMenu).forEach(btn => btn.addEventListener("click", ()=>{
+      currentLang = btn.dataset.lang;
+      applyTranslations();
+      langMenu.classList.remove("open");
+    }));
+
+    document.addEventListener("click", ()=> langMenu.classList.remove("open"));
+
+    document.addEventListener("click", (e)=>{
+      const readBtn = e.target.closest(".read-post");
+      const editBtn = e.target.closest(".edit-post");
+      const deleteBtn = e.target.closest(".delete-post");
+
+      if(readBtn){
+        const source = posts.length ? posts : starterPosts;
+        const found = source.find(p => String(p.id) === String(readBtn.dataset.id));
+        if(found) openModal(found);
+      }
+      if(editBtn) startEdit(editBtn.dataset.id);
+      if(deleteBtn) removePost(deleteBtn.dataset.id);
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
+
+    qs("#prevSlide").addEventListener("click", ()=>{ prevSlide(); initSlider(); });
+    qs("#nextSlide").addEventListener("click", ()=>{ nextSlide(); initSlider(); });
+
+    loginBtn.addEventListener("click", doLogin);
+    registerBtn.addEventListener("click", doRegister);
+    logoutBtn.addEventListener("click", doLogout);
+    publishBtn.addEventListener("click", savePost);
+    cancelEditBtn.addEventListener("click", resetForm);
+
+    qsa('a[href^="#"]').forEach(a=>a.addEventListener("click", function(e){
+      const target = qs(this.getAttribute("href"));
+      if(target){
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({top, behavior:"smooth"});
+      }
+    }));
+
+    window.addEventListener("scroll", ()=>{
+      const ids = ["home","news","courses","ideas","about","contact","admin"];
+      let active = "home";
+
+      ids.forEach(id=>{
+        const el = qs("#"+id);
+        if(el && window.scrollY >= el.offsetTop - 130) active = id;
+      });
+
+      qsa(".nav-link").forEach(a=>{
+        a.classList.toggle("active", a.getAttribute("href") === "#"+active);
+      });
+    });
+
+    /* =========================
+      INIT
+    ========================= */
+    function initFooterYear(){
+      qs("#yearNow").textContent = new Date().getFullYear();
+    }
+
+    applyTranslations();
+    renderSocials();
+    renderPosts();
+    initFooterYear();
 
     if(auth){
-      onAuthStateChanged(auth, async (user) => {
-        currentUser = user || null;
-        const userEmail = user?.email || "";
-        const adminOk = !!user && userEmail.toLowerCase() === ADMIN_EMAIL.toLowerCase();
-
-        if(user && adminOk){
-          setAdminVisible(true);
-          showStatus(authStatus, `Hyrë si admin: ${userEmail}`, true);
-        }else if(user && !adminOk){
-          setAdminVisible(false);
-          showStatus(authStatus, "Je hyrë si përdorues, por nuk ke akses admin.");
-        }else{
-          setAdminVisible(false);
-        }
-
-        await loadFirestorePosts();
+      onAuthStateChanged(auth, async user => {
+        currentUser = user;
+        setAdminUI(!!user && user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+        await loadPosts();
       });
-    }else{
-      setAdminVisible(false);
+    } else {
       renderPosts();
     }
-
-    /* ================= INIT ================= */
-    renderPosts();
-
-    /* Close mobile menu on resize */
-    window.addEventListener("resize", () => {
-      if(window.innerWidth > 1150) mobileMenu.classList.remove("open");
-    });
   </script>
 </body>
 </html>
